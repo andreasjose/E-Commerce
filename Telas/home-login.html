@@ -1,12 +1,8 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
     <title>E-Commerce</title>
 
     <style>
@@ -116,63 +112,66 @@
                 border-radius: 0px;
             }
         }
+
+        /* Remove the navbar's default rounded borders and increase the bottom margin */
+        .navbar {
+            margin-bottom: 50px;
+            border-radius: 0;
+        }
+
+        /* Remove the jumbotron's default bottom margin */
+        .jumbotron {
+            margin-bottom: 0;
+        }
+
+        /* Add a gray background color and some padding to the footer */
+        footer {
+            background-color: #f2f2f2;
+            padding: 25px;
+        }
     </style>
 </head>
 
 <body>
-    <!--F3EBF6-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">E-commerce</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Cadastrar</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Produtos
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li>
-                <!--
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#">Disabled</a>
+    <nav class="navbar navbar-inverse" style="height: 51px !important;">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li style="margin-left: -30px;"><a href="#">Home</a></li>
+                    <li><a href="#">Calçados</a></li>
+                    <li><a href="#">Roupas</a></li>
+                    <li><a href="#">Equipamentos</a></li>
+                    <li><a href="#">Masculino</a></li>
+                    <li><a href="#">Feminino</a></li>
+                    <li><a href="#">Infantil</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href=" #"><span class="glyphicon glyphicon-user"></span> Sua conta</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Carrinho</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right" style="margin-right: 20%; margin-top: 8px;">
+                    <li>
+                        <form class="form-inline" action="/action_page.php">
+                            <input style="width: 300px;" class="form-control mr-sm-2" type="text" placeholder="Produto">
+                            <button class="btn btn-success" type="submit">Buscar</button>
+                        </form>
                     </li>
-                -->
+                </ul>
 
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+            </div>
         </div>
     </nav>
 
 
 
-    <div class="main">
+    <div class="main" style="margin-top: 8%;">
         <p class="sign" align="center">Login</p>
         <form class="form1">
             <input class="un " type="text" align="center" placeholder="E-mail">
             <input class="pass" type="password" align="center" placeholder="Senha">
             <a class="submit" align="center">Entrar</a>
             <p class="forgot" align="center"><a href="#">Esqueceu a senha?</p>
-
-
+        </form>
     </div>
 
 </body>
