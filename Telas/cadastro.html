@@ -10,77 +10,70 @@
 
     <title>Cadastro</title>
 
-    <!-- Principal CSS do Bootstrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-    <!-- Estilos customizados para esse template -->
-    <link href="style/carousel.css" rel="stylesheet">
-    <link href="style/cover.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-        crossorigin="anonymous"></script>
-
-    <!-- Estilos customizados para esse template -->
-    <link href="style/form-validation.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
     <style>
         .corbtn {
             background-color: #00FF7F !important;
             border-color: #00FF7F !important;
         }
+
+        /* Remove the navbar's default rounded borders and increase the bottom margin */
+        .navbar {
+            margin-bottom: 50px;
+            border-radius: 0;
+        }
+
+        /* Remove the jumbotron's default bottom margin */
+        .jumbotron {
+            margin-bottom: 0;
+        }
+
+        /* Add a gray background color and some padding to the footer */
+        footer {
+            background-color: #f2f2f2;
+            padding: 25px;
+        }
+
+        .pula {
+            margin-bottom: 30px;
+        }
     </style>
 </head>
 
 <body>
-    <header class="">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">E-commerce</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Login</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Produtos
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </li>
-                    <!--
-                        <li class="nav-item">
-                            <a class="nav-link disabled" href="#">Disabled</a>
-                        </li>
-                    -->
-
+    <nav class="navbar navbar-inverse" style="height: 51px !important;">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li style="margin-left: -30px;"><a href="#">Home</a></li>
+                    <li><a href="#">Calçados</a></li>
+                    <li><a href="#">Roupas</a></li>
+                    <li><a href="#">Equipamentos</a></li>
+                    <li><a href="#">Masculino</a></li>
+                    <li><a href="#">Feminino</a></li>
+                    <li><a href="#">Infantil</a></li>
                 </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href=" #"><span class="glyphicon glyphicon-user"></span> Sua conta</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Carrinho</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right" style="margin-right: 20%; margin-top: 8px;">
+                    <li>
+                        <form class="form-inline" action="/action_page.php">
+                            <input style="width: 300px;" class="form-control mr-sm-2" type="text" placeholder="Produto">
+                            <button class="btn btn-success" type="submit">Buscar</button>
+                        </form>
+                    </li>
+                </ul>
+
             </div>
-        </nav>
-    </header>
+        </div>
+    </nav>
+
     <div class="container">
         <!--
             <div class=" text-center">
@@ -95,123 +88,84 @@
 
             </div>
             <div class="col-md-8">
-                <h4 class="mb-3">Endereço de cobrança</h4>
+                <h4 style="margin-bottom: 40px;" class="mb-3">Endereço de cobrança</h4>
                 <form class="needs-validation" novalidate action="/register" method="POST">
-                    <div class="row">
+                    <div class="row pula">
                         <div class="col-md-6 mb-3">
                             <label for="primeiroNome">Nome</label>
                             <input name="name" type="text" class="form-control" id="primeiroNome" placeholder=""
                                 value="" required>
-                            <div class="invalid-feedback">
-                                É obrigatório inserir um nome válido.
-                            </div>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="sobrenome">Sobrenome</label>
                             <input name="surname" type="text" class="form-control" id="sobrenome" placeholder=""
                                 value="" required>
-                            <div class="invalid-feedback">
-                                É obrigatório inserir um sobre nome válido.
-                            </div>
                         </div>
                     </div>
 
-                    <div class="mb-3">
-                        <label for="cpf">CPF</label>
-                        <div class="input-group">
+                    <div class="row pula">
+                        <div class="col-md-6 mb-3">
+                            <label for="cpf">CPF</label>
                             <input name="username" type="text" class="form-control" id="cpf"
                                 placeholder="123.456.789-12" required>
-                            <div class="invalid-feedback" style="width: 100%;">
-                                Seu CPF é obrigatório.
-                            </div>
                         </div>
                     </div>
 
-                    <div class="mb-3">
+                    <div class="mb-3 pula">
                         <label for="email">Email</label>
                         <input name="email" type="email" class="form-control" id="email"
                             placeholder="seuemail@exemplo.com" required>
-                        <div class="invalid-feedback">
-                            Por favor, insira um endereço de e-mail válido, para atualizações de entrega.
-                        </div>
                     </div>
 
-                    <div class="mb-3">
+                    <div class="mb-3 pula">
                         <label for="endereco">Endereço</label>
                         <input name="address_1" type="text" class="form-control" id="endereco"
                             placeholder="Rua da Lama, nº 11" required>
-                        <div class="invalid-feedback">
-                            Por favor, insira seu endereço de entrega.
-                        </div>
                     </div>
 
-                    <div class="mb-3">
+                    <div class="mb-3 pula">
                         <label for="endereco2">Endereço 2 <span class="text-muted">(Opcional)</span></label>
                         <input name="address_2" type="text" class="form-control" id="endereco2"
                             placeholder="Apartamento ou casa">
                     </div>
 
-                    <div class="row">
-                        <div class="col-md-5 mb-3">
+                    <div class="row pula">
+                        <div class="col-md-6 mb-3">
                             <label for="pais">País</label>
-                            <select name="country" class="custom-select d-block w-100" id="pais" required>
+                            <select name="country" class="custom-select d-block w-100"
+                                style="padding: 6px; width: 200px;" id="pais" required>
                                 <option value="">Escolha...</option>
                                 <option value="BR">Brasil</option>
                             </select>
-                            <div class="invalid-feedback">
-                                Por favor, escolha um país válido.
-                            </div>
                         </div>
-                        <div class="col-md-4 mb-3">
+                        <div class="col-md-6 mb-3">
                             <label for="estado">Estado</label>
-                            <select class="custom-select d-block w-100" id="estado" required>
+                            <select class="custom-select d-block w-100" id="estado" style="padding: 6px; width: 200px;"
+                                required>
                                 <option value="">Escolha...</option>
                                 <option>Acre</option>
                             </select>
-                            <div class="invalid-feedback">
-                                Por favor, insira um estado válido.
-                            </div>
                         </div>
-                        <div class="col-md-3 mb-3">
-                            <label for="cep">CEP</label>
-                            <input name="CEP" type="text" class="form-control" id="cep" placeholder="" required>
-                            <div class="invalid-feedback">
-                                É obrigatório inserir um CEP.
-                            </div>
-                        </div>
-
                     </div>
-                    <div class="mb-3">
+
+                    <div class="row pula">
+                        <div class="col-md-6 mb-3">
+                            <label for="cep">CEP</label>
+                            <input name="CEP" type="text" class="form-control" id="cep" placeholder="31963-821"
+                                required>
+                        </div>
+                    </div>
+
+                    <div class="mb-3 pula">
                         <label for="passwordInput">Senha</label>
                         <input name="password" type="password" class="form-control" id="passwordInput" placeholder="" ,
                             required>
-                        <div class="invalid-feedback">
-                            É obrigatório inserir uma senha.
-                        </div>
                     </div>
-                    <hr class="mb-4">
-
-
-
-
-
-                    <hr class="mb-4">
                     <button class="corbtn btn btn-primary btn-lg btn-block" type="submit">Finalizar Cadastro</button>
                 </form>
             </div>
-            <div class="col-md-2">
-
-            </div>
         </div>
 
-        <footer class="my-5 pt-5 text-muted text-center text-small">
-            <p class="mb-1">&copy; 2021 Ecommerce</p>
-            <ul class="list-inline">
-                <li class="list-inline-item"><a href="#">Privacidade</a></li>
-                <li class="list-inline-item"><a href="#">Termos</a></li>
-                <li class="list-inline-item"><a href="#">Suporte</a></li>
-            </ul>
-        </footer>
     </div>
 
     <!-- Principal JavaScript do Bootstrap
