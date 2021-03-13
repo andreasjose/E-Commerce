@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="Assets/Logo_icone.ico">
+
+    <title>Cadastro</title>
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <style>
+        .corbtn {
+            background-color: #00FF7F !important;
+            border-color: #00FF7F !important;
+        }
+
+        /* Remove the navbar's default rounded borders and increase the bottom margin */
+        .navbar {
+            margin-bottom: 50px;
+            border-radius: 0;
+        }
+
+        /* Remove the jumbotron's default bottom margin */
+        .jumbotron {
+            margin-bottom: 0;
+        }
+
+        /* Add a gray background color and some padding to the footer */
+        footer {
+            background-color: #f2f2f2;
+            padding: 25px;
+        }
+
+        .pula {
+            margin-bottom: 30px;
+        }
+
+        @media (min-width: 768px) {
+            .contaConf.navbar-collapse {
+                height: auto;
+                border-top: 0;
+                box-shadow: none;
+                max-height: none;
+                padding-left: 0;
+                padding-right: 0;
+            }
+
+            .contaConf.navbar-collapse.collapse {
+                display: block !important;
+                width: auto !important;
+                padding-bottom: 0;
+                overflow: visible !important;
+            }
+
+            .contaConf.navbar-collapse.in {
+                overflow-x: visible;
+            }
+
+            .contaConf.navbar {
+                max-width: 300px;
+                margin-right: 0;
+                margin-left: 0;
+            }
+
+            .contaConf.navbar-nav,
+            .contaConf.navbar-nav>li,
+            .contaConf.navbar-left,
+            .contaConf.navbar-right,
+            .contaConf.navbar-header {
+                float: none !important;
+            }
+
+            .contaConf.navbar-right .dropdown-menu {
+                left: 0;
+                right: auto;
+            }
+
+            .contaConf.navbar-collapse .navbar-nav.navbar-right:last-child {
+                margin-right: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li style="margin-left: -30px;"><a href="home.html">Home</a></li>
+                    <li><a href="lista-produto-calcados.html">Calçados</a></li>
+                    <li><a href="lista-produto-roupas.html">Roupas</a></li>
+                    <li><a href="lista-produto-equipamentos.html">Equipamentos</a></li>
+                    <li><a href="lista-produto-masculino.html">Masculino</a></li>
+                    <li><a href="lista-produto-feminino.html">Feminino</a></li>
+                    <li><a href="lista-produto-infantil.html">Infantil</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="cadastro.html"><span class="glyphicon glyphicon-plus"></span> Criar conta</a></li>
+                    <li><a href="home-login.html"><span class="glyphicon glyphicon-user"></span> Login</a></li>
+                    <li class="active"><a href="configuracoes.html"><span class="glyphicon glyphicon-cog"></span>
+                            Configurações</a>
+                    </li>
+                    <li><a href="carrinho.html"><span class="glyphicon glyphicon-shopping-cart"></span> Carrinho</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right" style="margin-top: 8px; margin-right: 14%;">
+                    <form class="form-inline" action="/action_page.php">
+                        <input style="width: 300px;" class="form-control mr-sm-2" type="text" placeholder="Produto">
+                        <button class="btn btn-success" type="submit">Buscar</button>
+                    </form>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+
+    <nav class="navbar navbar-default contaConf" role="navigation"
+        style="margin-left: 70px; float: left; margin-right: 5%;">
+        <div class="navbar-header contaConf">
+            <a class="navbar-brand contaConf" href="#">Configurações da Conta</a>
+        </div>
+
+        <div class="collapse navbar-collapse navbar-ex1-collapse contaConf">
+            <ul class="nav navbar-nav contaConf">
+                <li class="active"><a href="#">Dados da Conta</a></li> <!-- class="active" -->
+                <li><a href="#">Sair</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container" style="float: left;">
+
+        <div class="row">
+            <div class="col-md-2">
+
+            </div>
+            <div class="col-md-8">
+                <h4 style="margin-bottom: 40px;" class="mb-3">Endereço de cobrança</h4>
+                <form class="needs-validation" novalidate action="/register" method="POST">
+                    <div class="row pula">
+                        <div class="col-md-6 mb-3">
+                            <label for="primeiroNome">Nome</label>
+                            <input name="name" type="text" class="form-control" id="primeiroNome" placeholder=""
+                                value="" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="sobrenome">Sobrenome</label>
+                            <input name="surname" type="text" class="form-control" id="sobrenome" placeholder=""
+                                value="" required>
+                        </div>
+                    </div>
+
+                    <div class="row pula">
+                        <div class="col-md-6 mb-3">
+                            <label for="cpf">CPF</label>
+                            <input name="username" type="text" class="form-control" id="cpf"
+                                placeholder="123.456.789-12" required>
+                        </div>
+                    </div>
+
+                    <div class="mb-3 pula">
+                        <label for="email">Email</label>
+                        <input name="email" type="email" class="form-control" id="email"
+                            placeholder="seuemail@exemplo.com" required>
+                    </div>
+
+                    <div class="mb-3 pula">
+                        <label for="endereco">Endereço</label>
+                        <input name="address_1" type="text" class="form-control" id="endereco"
+                            placeholder="Rua da Lama, nº 11" required>
+                    </div>
+
+                    <div class="mb-3 pula">
+                        <label for="endereco2">Endereço 2 <span class="text-muted">(Opcional)</span></label>
+                        <input name="address_2" type="text" class="form-control" id="endereco2"
+                            placeholder="Apartamento ou casa">
+                    </div>
+
+                    <div class="row pula">
+                        <div class="col-md-6 mb-3">
+                            <label for="pais">País</label>
+                            <select name="country" class="custom-select d-block w-100"
+                                style="padding: 6px; width: 200px;" id="pais" required>
+                                <option value="">Escolha...</option>
+                                <option value="BR">Brasil</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="estado">Estado</label>
+                            <select class="custom-select d-block w-100" id="estado" style="padding: 6px; width: 200px;"
+                                required>
+                                <option value="">Escolha...</option>
+                                <option>Acre</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row pula">
+                        <div class="col-md-6 mb-3">
+                            <label for="cep">CEP</label>
+                            <input name="CEP" type="text" class="form-control" id="cep" placeholder="31963-821"
+                                required>
+                        </div>
+                    </div>
+
+                    <div class="mb-3 pula">
+                        <label for="passwordInput">Senha</label>
+                        <input name="password" type="password" class="form-control" id="passwordInput" placeholder="" ,
+                            required>
+                    </div>
+                    <button class="corbtn btn btn-primary btn-lg btn-block" type="submit">Alterar Cadastro</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Principal JavaScript do Bootstrap
+    ================================================== -->
+    <!-- Foi colocado no final para a página carregar mais rápido -->
+
+    <script>
+        // Exemplo de JavaScript para desativar o envio do formulário, se tiver algum campo inválido.
+        (function () {
+            'use strict';
+            window.addEventListener('load', function () {
+                // Selecione todos os campos que nós queremos aplicar estilos Bootstrap de validação customizados.
+                var forms = document.getElementsByClassName('needs-validation');
+                // Faz um loop neles e previne envio
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+</body>
+
+</html>
