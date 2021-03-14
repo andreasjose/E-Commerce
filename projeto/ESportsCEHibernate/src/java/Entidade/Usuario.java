@@ -32,6 +32,8 @@ public class Usuario {
     private String cpf;
     @Column(name = "email")
     private String email;
+    @Column(name = "cdusuario")
+    private String cdusuario;
 
     public int getIdusuario() {
         return idusuario;
