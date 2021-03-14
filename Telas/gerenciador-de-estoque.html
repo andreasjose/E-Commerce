@@ -118,6 +118,14 @@
 </head>
 
 <body>
+    <script>
+        function endSession() {
+            sessionStorage.setItem('status', "null");
+            window.location.href = "home-login-admin.html";
+            $("#sair").html('');
+        }
+    </script>
+
     <nav class="navbar navbar-inverse" style="height: 51px !important;">
         <div class="container-fluid">
             <div class="collapse navbar-collapse" id="myNavbar">
@@ -128,11 +136,12 @@
                     <li><a href="gerenciador-de-pedidos.html">Gerenciador de Pedidos</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="home-login-admin.html"><span class="glyphicon glyphicon-user"></span> Login</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-cog"></span> Sua conta</a>
+                    <li id="login"></li>
+                    <li id="sair"><a onclick="endSession()" style="margin-right: -15px;"><span
+                                class="glyphicon glyphicon-remove"></span> Sair</a>
                     </li>
                 </ul>
-                <ul class="nav navbar-nav navbar-right" style="margin-right: 24%; margin-top: 8px;">
+                <ul class="nav navbar-nav navbar-right" style="margin-right: 32%; margin-top: 8px;">
                     <li>
                         <form class="form-inline" action="/action_page.php">
                             <input style="width: 300px;" class="form-control mr-sm-2" type="text"

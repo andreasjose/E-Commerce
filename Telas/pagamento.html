@@ -4,6 +4,8 @@
 <head>
     <title>Bootstrap Example</title>
     <meta charset="utf-8">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <!-- Principal CSS do Bootstrap -->
     <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
@@ -38,6 +40,12 @@
 </head>
 
 <body>
+    <script>
+        function submitPedido() {
+            alert("Pedido efetuado, com sucesso! Um e-mail foi enviado para você com as informações sobre o pedido.")
+        }
+    </script>
+
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -58,8 +66,8 @@
                     <li><a href="lista-produto-infantil.html">Infantil</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="cadastro.html"><span class="glyphicon glyphicon-plus"></span> Criar conta</a></li>
-                    <li><a href="home-login.html"><span class="glyphicon glyphicon-user"></span> Login</a></li>
+                    <li id="create"></li>
+                    <li id="login"></li>
                     <li><a href="configuracoes.html"><span class="glyphicon glyphicon-cog"></span>
                             Configurações</a>
                     </li>
@@ -129,7 +137,7 @@
         </div>
         <div style="clear: both;"></div>
 
-        <button class="btn btn-success btn-lg btn-block" type="submit">Fechar pedido</button>
+        <button class="btn btn-success btn-lg btn-block" type="submit" onclick="submitPedido()">Fechar pedido</button>
         </form>
     </div>
     </div>

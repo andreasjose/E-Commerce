@@ -5,6 +5,8 @@
     <title>Bootstrap Example</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -40,6 +42,16 @@
 </head>
 
 <body style="background-color: #fafafa;">
+    <script>
+        $(document).ready(function () {
+            if (sessionStorage.getItem('status') != null && sessionStorage.getItem('status') != "null") {
+                $("#config").html('<a href="configuracoes.html"><span class="glyphicon glyphicon-cog"></span> Configurações</a>');
+                $("#login").html('');
+                $("#create").html('');
+            }
+        });
+    </script>
+
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -60,11 +72,11 @@
                     <li><a href="lista-produto-infantil.html">Infantil</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="cadastro.html"><span class="glyphicon glyphicon-plus"></span> Criar conta</a></li>
-                    <li><a href="home-login.html"><span class="glyphicon glyphicon-user"></span> Login</a></li>
-                    <li><a href="configuracoes.html"><span class="glyphicon glyphicon-cog"></span>
-                            Configurações</a>
+                    <li id="create"><a href="cadastro.html"><span class="glyphicon glyphicon-plus"></span> Criar
+                            conta</a></li>
+                    <li id="login"><a href="home-login.html"><span class="glyphicon glyphicon-user"></span> Login</a>
                     </li>
+                    <li id="config"></li>
                     <li><a href="carrinho.html"><span class="glyphicon glyphicon-shopping-cart"></span> Carrinho</a>
                     </li>
                 </ul>

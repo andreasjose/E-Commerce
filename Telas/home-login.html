@@ -1,6 +1,8 @@
 <html>
 
 <head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
     <title>E-Commerce</title>
@@ -133,6 +135,33 @@
 </head>
 
 <body>
+    <script>
+        function login() {
+            var username = $("#username").val();
+            var password = $("#password").val();
+
+            sessionStorage.setItem('status', 'loggedIn')
+            window.location.href = "home.html";
+            $("#config").html('<a href="configuracoes.html"><span class="glyphicon glyphicon-cog"></span > Configurações</a>');
+            $("#login").html('');
+            $("#create").html('');
+
+            $.ajax({
+                type: "POST",
+                url: "",
+                data: { "username": username, "password": password },
+                dataType: "json",
+                success: function (data) {
+                    sessionStorage.setItem('status', 'loggedIn')
+                    window.location.href = "home.html";
+                },
+                failure: function (errMsg) {
+                    alert("Login inválido.");
+                }
+            });
+        }
+    </script>
+
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -153,11 +182,12 @@
                     <li><a href="lista-produto-infantil.html">Infantil</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="cadastro.html"><span class="glyphicon glyphicon-plus"></span> Criar conta</a></li>
-                    <li class="active"><a href="home-login.html"><span class="glyphicon glyphicon-user"></span>
+                    <li id="create"><a href="cadastro.html"><span class="glyphicon glyphicon-plus"></span> Criar
+                            conta</a></li>
+                    <li id="login" class="active"><a href="home-login.html"><span
+                                class="glyphicon glyphicon-user"></span>
                             Login</a></li>
-                    <li><a href="configuracoes.html"><span class="glyphicon glyphicon-cog"></span> Configurações</a>
-                    </li>
+                    <li id="config"></li>
                     <li><a href="carrinho.html"><span class="glyphicon glyphicon-shopping-cart"></span> Carrinho</a>
                     </li>
                 </ul>
@@ -177,9 +207,9 @@
     <div class="main" style="margin-top: 8%;">
         <p class="sign" align="center">Login</p>
         <form class="form1">
-            <input class="un " type="text" align="center" placeholder="E-mail">
-            <input class="pass" type="password" align="center" placeholder="Senha">
-            <a class="submit" align="center">Entrar</a>
+            <input id="username" class="un " type="text" align="center" placeholder="E-mail">
+            <input id="password" class="pass" type="password" align="center" placeholder="Senha">
+            <a class="submit" align="center" onclick="login()">Entrar</a>
             <p class="forgot" align="center"><a href="#">Esqueceu a senha?</p>
         </form>
     </div>

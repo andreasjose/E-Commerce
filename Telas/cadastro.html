@@ -12,6 +12,8 @@
 
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
@@ -65,11 +67,12 @@
                     <li><a href="lista-produto-infantil.html">Infantil</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a href="cadastro.html"><span class="glyphicon glyphicon-plus"></span> Criar
+                    <li id="create" class="active"><a href="cadastro.html"><span
+                                class="glyphicon glyphicon-plus"></span> Criar
                             conta</a></li>
-                    <li><a href="home-login.html"><span class="glyphicon glyphicon-user"></span> Login</a></li>
-                    <li><a href="configuracoes.html"><span class="glyphicon glyphicon-cog"></span> Configurações</a>
+                    <li id="login"><a href="home-login.html"><span class="glyphicon glyphicon-user"></span> Login</a>
                     </li>
+                    <li id="config"></li>
                     <li><a href="carrinho.html"><span class="glyphicon glyphicon-shopping-cart"></span> Carrinho</a>
                     </li>
                 </ul>
@@ -98,7 +101,8 @@
 
             </div>
             <div class="col-md-8">
-                <h4 style="margin-bottom: 40px;" class="mb-3">Endereço de cobrança</h4>
+                <h4 style="margin-bottom: 40px;" class="mb-3">Necessário preencher as informações para realização do
+                    cadastro.</h4>
                 <form class="needs-validation" novalidate action="/register" method="POST">
                     <div class="row pula">
                         <div class="col-md-6 mb-3">
