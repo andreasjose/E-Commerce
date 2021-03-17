@@ -1,6 +1,9 @@
-<html>
+<!DOCTYPE html>
+<html lang="pt-br">
 
 <head>
+    <meta charset="utf-8">
+    <title>Login</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -137,7 +140,6 @@
 <body>
     <script>
         function login() {
-            var acess = 'admin'; // EXCLUIR 
             var username = $("#username").val();
             var password = $("#password").val();
 
@@ -146,16 +148,6 @@
             }
 
             else {
-                // EXCLUIR 
-                sessionStorage.setItem('status', 'loggedIn')
-                if (acess == 'cliente') {
-                    window.location.href = "home.html";
-                }
-                else {
-                    window.location.href = "gerenciador-de-estoque.html";
-                }
-                // EXCLUIR 
-
                 // REQUISIÇÃO PARA O BACKEND
                 $.ajax({
                     type: "POST",

@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Cadastro</title>
+    <title>Configurações</title>
 
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -114,10 +114,6 @@
             let state = $('#state option:selected').val();
             let cep = $('#cep').val();
             let password = $('#password').val();
-
-            // EXCLUIR
-            alert('Cadastro atualizado com sucesso!');
-            // EXCLUIR
 
             // REQUISIÇÃO PARA O BACKEND
             $.ajax({

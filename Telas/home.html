@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
-    <title>Bootstrap Example</title>
     <meta charset="utf-8">
+    <title>Início</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -42,25 +42,6 @@
                 $("#login").html('');
                 $("#create").html('');
             }
-
-            // EXCLUIR 
-            let products = [{
-                "id": 1,
-                "img": 'nike.jpg',
-                "produto": 'Tênis Nike Revolution 5',
-                "descricao": 'Com ótimo amortecimento em espuma, o Tênis Nike Masculino Revolution 5 é...',
-                "preco": 209.99
-            },
-            {
-                "id": 2,
-                "img": 'adidas.webp',
-                "produto": 'Tênis adidas Falcon',
-                "descricao": 'Um ótimo aliado para os treinos na academia, caminhada e treinos leves de corrida...',
-                "preco": 459.87
-            }
-            ];
-            insertProduct(products);
-            // EXCLUIR 
 
             // REQUISIÇÃO PARA O BACKEND
             $.ajax({

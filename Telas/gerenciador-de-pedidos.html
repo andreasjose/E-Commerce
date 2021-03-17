@@ -2,8 +2,8 @@
 <html lang="pt-br">
 
 <head>
-    <title>E-commerce</title>
     <meta charset="utf-8">
+    <title>Gerenciar Pedidos</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -160,35 +160,6 @@
             getPedidosPendentes();
             getPedidosEmAndamento();
             getPedidosFinalizados();
-
-            // EXCLUIR
-            let teste1 = [{
-                "id": 'teste1',
-                "fornecedor": 'teste1',
-                "nomePedido": 'teste1',
-                "valor": 'teste1',
-                "dataCriacao": 'teste1'
-            }];
-            let teste2 = [{
-                "id": 'teste2',
-                "fornecedor": 'teste2',
-                "nomePedido": 'teste2',
-                "valor": 'teste2',
-                "dataPedido": 'teste2',
-                "previsaoChegada": 'teste2'
-            }];
-            let teste3 = [{
-                "id": 'teste3',
-                "fornecedor": 'teste3',
-                "nomePedido": 'teste3',
-                "valor": 'teste3',
-                "dataPedido": 'teste3',
-                "dataEntrega": 'teste3'
-            }];
-            insertRowPedido(teste1, 'pendente');
-            insertRowPedido(teste2, 'emAndamento');
-            insertRowPedido(teste3, 'finalizado');
-            // EXCLUIR
         });
 
         function delTablePedido() {
@@ -486,57 +457,7 @@
                                                 placeholder="Data de inserção" disabled></th>
                                     </tr>
                                 </thead>
-                                <tbody id="bodyPedido">
-                                    <tr>
-                                        <td>Fornecedor 1</td>
-                                        <td>Produto tal</td>
-                                        <td>10</td>
-                                        <td>R$249,99</td>
-                                        <td>17/02/2021</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Fornecedor 2</td>
-                                        <td>Produto tal</td>
-                                        <td>10</td>
-                                        <td>R$159,87</td>
-                                        <td>17/02/2021</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Fornecedor 3</td>
-                                        <td>Produto tal</td>
-                                        <td>10</td>
-                                        <td>R$85,28</td>
-                                        <td>17/02/2021</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Fornecedor 4</td>
-                                        <td>Produto tal</td>
-                                        <td>10</td>
-                                        <td>R$55,21</td>
-                                        <td>17/02/2021</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Fornecedor 5</td>
-                                        <td>Produto tal</td>
-                                        <td>10</td>
-                                        <td>R$35,69</td>
-                                        <td>17/02/2021</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Fornecedor 6</td>
-                                        <td>Produto tal</td>
-                                        <td>10</td>
-                                        <td>R$984,99</td>
-                                        <td>17/02/2021</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Fornecedor 7</td>
-                                        <td>Produto tal</td>
-                                        <td>10</td>
-                                        <td>R$0,99</td>
-                                        <td>17/02/2021</td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="bodyPedido"></tbody>
                             </table>
                         </div>
                     </div>
@@ -575,57 +496,7 @@
                                                 placeholder="Data de criação" disabled></th>
                                     </tr>
                                 </thead>
-                                <tbody id="pedidoPendente">
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Fornecedor 1</td>
-                                        <td>Pedido tal</td>
-                                        <td>R$249,99</td>
-                                        <td>17/02/2021</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Fornecedor 2</td>
-                                        <td>Pedido tal</td>
-                                        <td>R$159,87</td>
-                                        <td>17/02/2021</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Fornecedor 3</td>
-                                        <td>Pedido tal</td>
-                                        <td>R$85,28</td>
-                                        <td>17/02/2021</td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>Fornecedor 4</td>
-                                        <td>Pedido tal</td>
-                                        <td>R$55,21</td>
-                                        <td>17/02/2021</td>
-                                    </tr>
-                                    <tr>
-                                        <td>5</td>
-                                        <td>Fornecedor 5</td>
-                                        <td>Pedido tal</td>
-                                        <td>R$35,69</td>
-                                        <td>17/02/2021</td>
-                                    </tr>
-                                    <tr>
-                                        <td>6</td>
-                                        <td>Fornecedor 6</td>
-                                        <td>Pedido tal</td>
-                                        <td>R$984,99</td>
-                                        <td>17/02/2021</td>
-                                    </tr>
-                                    <tr>
-                                        <td>7</td>
-                                        <td>Fornecedor 7</td>
-                                        <td>Pedido tal</td>
-                                        <td>R$0,99</td>
-                                        <td>17/02/2021</td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="pedidoPendente"></tbody>
                             </table>
                         </div>
                     </div>
@@ -666,64 +537,7 @@
                                                 placeholder="Previsão de chegada" disabled></th>
                                     </tr>
                                 </thead>
-                                <tbody id="pedidoEmAndamento">
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Fornecedor 1</td>
-                                        <td>Pedido tal</td>
-                                        <td>R$249,99</td>
-                                        <td>17/02/2021</td>
-                                        <td>19/03/2021</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Fornecedor 2</td>
-                                        <td>Pedido tal</td>
-                                        <td>R$159,87</td>
-                                        <td>17/02/2021</td>
-                                        <td>19/03/2021</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Fornecedor 3</td>
-                                        <td>Pedido tal</td>
-                                        <td>R$85,28</td>
-                                        <td>17/02/2021</td>
-                                        <td>19/03/2021</td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>Fornecedor 4</td>
-                                        <td>Pedido tal</td>
-                                        <td>R$55,21</td>
-                                        <td>17/02/2021</td>
-                                        <td>19/03/2021</td>
-                                    </tr>
-                                    <tr>
-                                        <td>5</td>
-                                        <td>Fornecedor 5</td>
-                                        <td>Pedido tal</td>
-                                        <td>R$35,69</td>
-                                        <td>17/02/2021</td>
-                                        <td>19/03/2021</td>
-                                    </tr>
-                                    <tr>
-                                        <td>6</td>
-                                        <td>Fornecedor 6</td>
-                                        <td>Pedido tal</td>
-                                        <td>R$984,99</td>
-                                        <td>17/02/2021</td>
-                                        <td>19/03/2021</td>
-                                    </tr>
-                                    <tr>
-                                        <td>7</td>
-                                        <td>Fornecedor 7</td>
-                                        <td>Pedido tal</td>
-                                        <td>R$0,99</td>
-                                        <td>17/02/2021</td>
-                                        <td>19/03/2021</td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="pedidoEmAndamento"></tbody>
                             </table>
                         </div>
                     </div>
@@ -764,64 +578,7 @@
                                                 placeholder="Data de entrega" disabled></th>
                                     </tr>
                                 </thead>
-                                <tbody id="pedidoFinalizado">
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Fornecedor 1</td>
-                                        <td>Pedido tal</td>
-                                        <td>R$249,99</td>
-                                        <td>17/02/2021</td>
-                                        <td>19/03/2021</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Fornecedor 2</td>
-                                        <td>Pedido tal</td>
-                                        <td>R$159,87</td>
-                                        <td>17/02/2021</td>
-                                        <td>19/03/2021</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Fornecedor 3</td>
-                                        <td>Pedido tal</td>
-                                        <td>R$85,28</td>
-                                        <td>17/02/2021</td>
-                                        <td>19/03/2021</td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>Fornecedor 4</td>
-                                        <td>Pedido tal</td>
-                                        <td>R$55,21</td>
-                                        <td>17/02/2021</td>
-                                        <td>19/03/2021</td>
-                                    </tr>
-                                    <tr>
-                                        <td>5</td>
-                                        <td>Fornecedor 5</td>
-                                        <td>Pedido tal</td>
-                                        <td>R$35,69</td>
-                                        <td>17/02/2021</td>
-                                        <td>19/03/2021</td>
-                                    </tr>
-                                    <tr>
-                                        <td>6</td>
-                                        <td>Fornecedor 6</td>
-                                        <td>Pedido tal</td>
-                                        <td>R$984,99</td>
-                                        <td>17/02/2021</td>
-                                        <td>19/03/2021</td>
-                                    </tr>
-                                    <tr>
-                                        <td>7</td>
-                                        <td>Fornecedor 7</td>
-                                        <td>Pedido tal</td>
-                                        <td>R$0,99</td>
-                                        <td>17/02/2021</td>
-                                        <td>19/03/2021</td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="pedidoFinalizado"></tbody>
                             </table>
                         </div>
                     </div>

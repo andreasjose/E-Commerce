@@ -1,14 +1,12 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
     <meta charset="utf-8">
+    <title>Cadastro</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
-    <title>Cadastro</title>
-
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -58,11 +56,6 @@
             let state = $('#state option:selected').text();
             let cep = $('#cep').val();
             let password = $('#password').val();
-
-            // EXCLUIR
-            alert('Cadastro realizado com sucesso!');
-            window.location.href = 'home-login.html';
-            // EXCLUIR
 
             // REQUISIÇÃO PARA O BACKEND
             $.ajax({
