@@ -42,7 +42,127 @@
                 $("#login").html('');
                 $("#create").html('');
             }
+
+            // iterate localStorage
+            for (var i = 0; i < localStorage.length; i++) {
+                // set iteration key name
+                var key = localStorage.key(i);
+
+                // use key name to retrieve the corresponding value
+                insertProductRow(localStorage.getItem(key), i);
+            }
+
+            changeTotalPrice();
         });
+
+        function insertProductRow(productObject, position) {
+            let product = JSON.parse(productObject);
+
+            let img = product['img'];
+            let name = product['name'];
+            let price = product['price'];
+
+            let rowId = 'tr' + position;
+            $('#tbodyProducts').append(`
+                <tr id="` + rowId + `">
+                    <td><img src="` + img + `" alt="Produto" height="60" width="60">
+                        <span style="margin-left: 15px;">` + name + `</span>
+                    </td>
+                    <td class="productQuantity">
+                        <select id="` + position + `" onchange="changePriceRowProduct(event)" style="width: 40px; height: 30px">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                            <option>10</option>
+                        </select>
+                    </td>
+                    <td class="productPrice">R$ <span id="` + price + `">` + price + `</span></td>
+                </tr>
+            `);
+        }
+
+        function changePriceRowProduct(rowIndex) {
+            let row = 'tr' + $(rowIndex.target).attr('id');
+
+            let quantityProduct = $('#' + row + ' .productQuantity select option:selected').text();
+            let priceProduct = $('#' + row + ' .productPrice span').attr("id");
+
+            let newPrice = (parseFloat(quantityProduct) * parseFloat(priceProduct.replace(",", "."))).toFixed(2);
+            newPrice = newPrice.toString();
+            newPrice = newPrice.replace(".", ",");
+
+            $('#' + row + ' .productPrice span').html(newPrice);
+
+            changeTotalPrice();
+        }
+
+        function changeTotalPrice() {
+            let rows = $('#tbodyProducts tr td.productPrice span');
+
+            let total = 0.0;
+            let price = '';
+            for (let index = 0; index < rows.length; index++) {
+                price = $(rows[index]).html().replace(",", ".");
+
+                total += parseFloat(price);
+            }
+            total = total.toFixed(2);
+            total = total.toString();
+            total = total.replace(".", ",");
+            $('#total').html(total);
+        }
+
+        function goToPay() {
+            if (sessionStorage.getItem('status') != null && sessionStorage.getItem('status') != "null") {
+                postPedido();
+                window.location.href = "pagamento.html?total=" + $('#total').html();
+            }
+            else {
+                alert('É necessário estar logado para realizar a compra.');
+            }
+        }
+
+        function postPedido() {
+            let pedido = [];
+
+            let name = '';
+            let quantity = 0;
+            let price = 0.0;
+
+            let rows = $('#tbodyProducts > tr');
+            console.log(rows);
+            for (let i = 0; i < rows.length; i++) {
+                name = $($('#' + $(rows[i]).attr('id')).find("span")[0]).html();
+                quantity = $('#' + $(rows[i]).attr('id') + ' option:selected').html();
+                price = $($('#' + $(rows[i]).attr('id')).find("span")[1]).html();
+
+                pedido.push(
+                    {
+                        "produto": name,
+                        "quantidade": quantity,
+                        "preco": price
+                    }
+                );
+            }
+
+            // REQUISIÇÃO PARA O BACKEND
+            $.ajax({
+                type: "POST",
+                url: "/pedidoCliente",
+                data: { "pedido": pedido },
+                dataType: "json",
+                success: function (success) {
+                },
+                failure: function (errMsg) {
+                }
+            });
+        }
     </script>
 
     <nav class="navbar navbar-inverse">
@@ -74,7 +194,7 @@
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right" style="margin-top: 8px; margin-right: 14%;">
-                    <form class="form-inline" action="/action_page.php">
+                    <form class="form-inline">
                         <input style="width: 300px;" class="form-control mr-sm-2" type="text" placeholder="Produto">
                         <button class="btn btn-success" type="submit">Buscar</button>
                     </form>
@@ -102,46 +222,18 @@
                     <th scope="col" style="width: 20%;">Preço</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td><img src="bermuda-adidas.jfif" alt="Produto" height="60" width="60">
-                        <span style="margin-left: 15px;">Bermuda adidas</span>
-                    </td>
-                    <td><input type="number" id="quantity" name="quantity" min="1" value="1"
-                            style="width: 30px; text-align: center;"></td>
-                    <td>R$99,90</td>
-                </tr>
-                <tr>
-                    <td><img src="bermuda-adidas.jfif" alt="Produto" height="60" width="60">
-                        <span style="margin-left: 15px;">Bermuda adidas</span>
-                    </td>
-                    <td><input type="number" id="quantity" name="quantity" min="1" value="1"
-                            style="width: 30px; text-align: center;"></td>
-                    <td>R$99,90</td>
-                </tr>
-                <tr>
-                    <td><img src="bermuda-adidas.jfif" alt="Produto" height="60" width="60">
-                        <span style="margin-left: 15px;">Bermuda adidas</span>
-                    </td>
-                    <td><input type="number" id="quantity" name="quantity" min="1" value="1"
-                            style="width: 30px; text-align: center;"></td>
-                    <td>R$99,90</td>
-                </tr>
-            </tbody>
+            <tbody id="tbodyProducts"></tbody>
         </table>
 
         <div style="margin-top: 40px; border-radius: 8px; border: solid 1px #000">
-            <h3 style="color: black; text-align: center;">Total: R$1000,00</h3>
+            <h3 style="color: black; text-align: center;">Total: R$ <span id="total"></span></h3>
         </div>
         <div style="margin-top: 40px;">
-            <a href="pagamento.html"><button style="float: right;" type="button"
+            <a onclick="goToPay()"><button style="float: right;" type="button"
                     class="btn btn-success">Continuar</button></a>
         </div>
         <div style="clear: both;"></div>
     </div>
-
-
-
 
 </body>
 

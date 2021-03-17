@@ -7,11 +7,6 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <!-- Principal CSS do Bootstrap -->
-    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Estilos customizados para esse template -->
-    <link href="form-validation.css" rel="stylesheet">
     <style>
         /* Remove the navbar's default rounded borders and increase the bottom margin */
         .navbar {
@@ -41,8 +36,26 @@
 
 <body>
     <script>
+        $(document).ready(function () {
+            var queryStrings = getUrlVars();
+            $('#total').html('R$ ' + queryStrings['total']);
+        });
+
+        function getUrlVars() {
+            var vars = [], hash;
+            var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+            for (var i = 0; i < hashes.length; i++) {
+                hash = hashes[i].split('=');
+                vars.push(hash[0]);
+                vars[hash[0]] = hash[1];
+            }
+            return vars;
+        }
+
         function submitPedido() {
-            alert("Pedido efetuado, com sucesso! Um e-mail foi enviado para você com as informações sobre o pedido.")
+            window.localStorage.clear();
+            alert("Pedido efetuado, com sucesso!"); // Um e-mail foi enviado para você com as informações sobre o pedido.
+            window.location.href = "home.html";
         }
     </script>
 
@@ -75,7 +88,7 @@
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right" style="margin-top: 8px; margin-right: 14%;">
-                    <form class="form-inline" action="/action_page.php">
+                    <form class="form-inline">
                         <input style="width: 300px;" class="form-control mr-sm-2" type="text" placeholder="Produto">
                         <button class="btn btn-success" type="submit">Buscar</button>
                     </form>
@@ -132,13 +145,12 @@
                 <h3>Total:</h3>
             </div>
             <div style="float: right;">
-                <h3>R$1000,99</h3>
+                <h3 id="total"></h3>
             </div>
         </div>
         <div style="clear: both;"></div>
 
         <button class="btn btn-success btn-lg btn-block" type="submit" onclick="submitPedido()">Fechar pedido</button>
-        </form>
     </div>
     </div>
 

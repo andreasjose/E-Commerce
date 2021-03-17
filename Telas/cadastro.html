@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="Assets/Logo_icone.ico">
 
     <title>Cadastro</title>
 
@@ -47,6 +46,54 @@
 </head>
 
 <body>
+    <script>
+        function registerDone() {
+            let name = $('#name').val();
+            let surname = $('#surname').val();
+            let cpf = $('#cpf').val();
+            let email = $('#email').val();
+            let address1 = $('#address1').val();
+            let address2 = $('#address2').val();
+            let country = $('#country option:selected').text();
+            let state = $('#state option:selected').text();
+            let cep = $('#cep').val();
+            let password = $('#password').val();
+
+            // EXCLUIR
+            alert('Cadastro realizado com sucesso!');
+            window.location.href = 'home-login.html';
+            // EXCLUIR
+
+            // REQUISIÇÃO PARA O BACKEND
+            $.ajax({
+                type: "POST",
+                url: "/cadastro",
+                data: {
+                    "nome": name,
+                    "sobreNome": surname,
+                    "cpf": cpf,
+                    "email": email,
+                    "endereco1": address1,
+                    "endereco2": address2,
+                    "pais": country,
+                    "estado": state,
+                    "cep": cep,
+                    "senha": password
+                },
+                dataType: "json",
+                success: function (success) {
+                    alert('Cadastro realizado com sucesso!');
+                    window.location.href = 'home-login.html';
+                },
+                failure: function (errMsg) {
+                    alert('Ocorreu um erro, por favor tente mais tarde!');
+                }
+            });
+
+
+        }
+    </script>
+
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -77,7 +124,7 @@
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right" style="margin-top: 8px; margin-right: 14%;">
-                    <form class="form-inline" action="/action_page.php">
+                    <form class="form-inline">
                         <input style="width: 300px;" class="form-control mr-sm-2" type="text" placeholder="Produto">
                         <button class="btn btn-success" type="submit">Buscar</button>
                     </form>
@@ -103,109 +150,84 @@
             <div class="col-md-8">
                 <h4 style="margin-bottom: 40px;" class="mb-3">Necessário preencher as informações para realização do
                     cadastro.</h4>
-                <form class="needs-validation" novalidate action="/register" method="POST">
-                    <div class="row pula">
-                        <div class="col-md-6 mb-3">
-                            <label for="primeiroNome">Nome</label>
-                            <input name="name" type="text" class="form-control" id="primeiroNome" placeholder=""
-                                value="" required>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label for="sobrenome">Sobrenome</label>
-                            <input name="surname" type="text" class="form-control" id="sobrenome" placeholder=""
-                                value="" required>
-                        </div>
+                <div class="row pula">
+                    <div class="col-md-6 mb-3">
+                        <label for="primeiroNome">Nome</label>
+                        <input id="name" name="name" type="text" class="form-control" id="primeiroNome" placeholder=""
+                            value="" required>
                     </div>
-
-                    <div class="row pula">
-                        <div class="col-md-6 mb-3">
-                            <label for="cpf">CPF</label>
-                            <input name="username" type="text" class="form-control" id="cpf"
-                                placeholder="123.456.789-12" required>
-                        </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="sobrenome">Sobrenome</label>
+                        <input id="surname" name="surname" type="text" class="form-control" id="sobrenome"
+                            placeholder="" value="" required>
                     </div>
+                </div>
 
-                    <div class="mb-3 pula">
-                        <label for="email">Email</label>
-                        <input name="email" type="email" class="form-control" id="email"
-                            placeholder="seuemail@exemplo.com" required>
+                <div class="row pula">
+                    <div class="col-md-6 mb-3">
+                        <label for="cpf">CPF</label>
+                        <input id="cpf" name="username" type="text" class="form-control" id="cpf"
+                            placeholder="123.456.789-12" required>
                     </div>
+                </div>
 
-                    <div class="mb-3 pula">
-                        <label for="endereco">Endereço</label>
-                        <input name="address_1" type="text" class="form-control" id="endereco"
-                            placeholder="Rua da Lama, nº 11" required>
+                <div class="mb-3 pula">
+                    <label for="email">Email</label>
+                    <input id="email" name="email" type="email" class="form-control" id="email"
+                        placeholder="seuemail@exemplo.com" required>
+                </div>
+
+                <div class="mb-3 pula">
+                    <label for="endereco">Endereço</label>
+                    <input id="address1" name="address_1" type="text" class="form-control" id="endereco"
+                        placeholder="Rua da Lama, nº 11" required>
+                </div>
+
+                <div class="mb-3 pula">
+                    <label for="endereco2">Endereço 2 <span class="text-muted">(Opcional)</span></label>
+                    <input id="address2" name="address_2" type="text" class="form-control" id="endereco2"
+                        placeholder="Apartamento ou casa">
+                </div>
+
+                <div class="row pula">
+                    <div class="col-md-6 mb-3">
+                        <label for="pais">País</label>
+                        <select id="country" name="country" class="custom-select d-block w-100"
+                            style="padding: 6px; width: 200px;" id="pais" required>
+                            <option value="">Escolha...</option>
+                            <option value="BR">Brasil</option>
+                        </select>
                     </div>
-
-                    <div class="mb-3 pula">
-                        <label for="endereco2">Endereço 2 <span class="text-muted">(Opcional)</span></label>
-                        <input name="address_2" type="text" class="form-control" id="endereco2"
-                            placeholder="Apartamento ou casa">
+                    <div class="col-md-6 mb-3">
+                        <label for="estado">Estado</label>
+                        <select id="state" class="custom-select d-block w-100" id="estado"
+                            style="padding: 6px; width: 200px;" required>
+                            <option value="">Escolha...</option>
+                            <option>Acre</option>
+                        </select>
                     </div>
+                </div>
 
-                    <div class="row pula">
-                        <div class="col-md-6 mb-3">
-                            <label for="pais">País</label>
-                            <select name="country" class="custom-select d-block w-100"
-                                style="padding: 6px; width: 200px;" id="pais" required>
-                                <option value="">Escolha...</option>
-                                <option value="BR">Brasil</option>
-                            </select>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label for="estado">Estado</label>
-                            <select class="custom-select d-block w-100" id="estado" style="padding: 6px; width: 200px;"
-                                required>
-                                <option value="">Escolha...</option>
-                                <option>Acre</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="row pula">
-                        <div class="col-md-6 mb-3">
-                            <label for="cep">CEP</label>
-                            <input name="CEP" type="text" class="form-control" id="cep" placeholder="31963-821"
-                                required>
-                        </div>
-                    </div>
-
-                    <div class="mb-3 pula">
-                        <label for="passwordInput">Senha</label>
-                        <input name="password" type="password" class="form-control" id="passwordInput" placeholder="" ,
+                <div class="row pula">
+                    <div class="col-md-6 mb-3">
+                        <label for="cep">CEP</label>
+                        <input id="cep" name="CEP" type="text" class="form-control" id="cep" placeholder="31963-821"
                             required>
                     </div>
-                    <button class="corbtn btn btn-primary btn-lg btn-block" type="submit">Finalizar Cadastro</button>
-                </form>
+                </div>
+
+                <div class="mb-3 pula">
+                    <label for="passwordInput">Senha</label>
+                    <input id="password" name="password" type="password" class="form-control" id="passwordInput"
+                        placeholder="" , required>
+                </div>
+                <button class="corbtn btn btn-primary btn-lg btn-block" onclick="registerDone()">Finalizar
+                    Cadastro</button>
             </div>
         </div>
 
     </div>
 
-    <!-- Principal JavaScript do Bootstrap
-    ================================================== -->
-    <!-- Foi colocado no final para a página carregar mais rápido -->
-
-    <script>
-        // Exemplo de JavaScript para desativar o envio do formulário, se tiver algum campo inválido.
-        (function () {
-            'use strict';
-            window.addEventListener('load', function () {
-                // Selecione todos os campos que nós queremos aplicar estilos Bootstrap de validação customizados.
-                var forms = document.getElementsByClassName('needs-validation');
-                // Faz um loop neles e previne envio
-                var validation = Array.prototype.filter.call(forms, function (form) {
-                    form.addEventListener('submit', function (event) {
-                        if (form.checkValidity() === false) {
-                            event.preventDefault();
-                            event.stopPropagation();
-                        }
-                        form.classList.add('was-validated');
-                    }, false);
-                });
-            }, false);
-        })();
-    </script>
 </body>
 
 </html>

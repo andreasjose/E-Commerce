@@ -5,8 +5,8 @@
     <meta charset="utf-8" />
     <title>E-commerce</title>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
@@ -119,10 +119,43 @@
 
 <body>
     <script>
+        $(document).ready(function () {
+            // REQUISIÇÃO PARA O BACKEND
+            $.ajax({
+                type: "GET",
+                url: "/estoque",
+                data: {},
+                dataType: "json",
+                success: function (estoque) {
+                    for (let i = 0; i < pedidos.length; i++) {
+                        insertLineProduct(estoque[i]);
+                    }
+                },
+                failure: function (errMsg) {
+                    alert("Falha no carregamento do estoque.");
+                }
+            });
+        });
+
         function endSession() {
             sessionStorage.setItem('status', "null");
-            window.location.href = "home-login-admin.html";
+            window.location.href = "home-login.html";
             $("#sair").html('');
+        }
+
+        function insertLineProduct(product) {
+            $('#tbEstoque').append(`
+                <tr>
+                    <td>` + product['id'] + `</td>
+                    <td>` + product['nome'] + `</td>
+                    <td>` + product['preco'] + `</td>
+                    <td>` + product['qntdMax'] + `</td>
+                    <td>` + product['qntdMin'] + `</td>
+                    <td>` + product['dataInicial'] + `</td>
+                    <td>` + product['dataFinal'] + `</td>
+                    <td>` + product['dataDescont'] + `</td>
+                </tr>
+            `);
         }
     </script>
 
@@ -143,7 +176,7 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right" style="margin-right: 32%; margin-top: 8px;">
                     <li>
-                        <form class="form-inline" action="/action_page.php">
+                        <form class="form-inline">
                             <input style="width: 300px;" class="form-control mr-sm-2" type="text"
                                 placeholder="Funcionalidade">
                             <button class="btn btn-success" type="submit">Buscar</button>
@@ -192,7 +225,7 @@
                                     placeholder="Data descontinuação" disabled></th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="tbEstoque">
                         <tr>
                             <td>1</td>
                             <td>Camisa lacoste</td>

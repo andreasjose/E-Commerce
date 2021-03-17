@@ -5,8 +5,8 @@
     <title>E-commerce</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -156,6 +156,41 @@
     </style>
 
     <script>
+        $(document).ready(function () {
+            getPedidosPendentes();
+            getPedidosEmAndamento();
+            getPedidosFinalizados();
+
+            // EXCLUIR
+            let teste1 = [{
+                "id": 'teste1',
+                "fornecedor": 'teste1',
+                "nomePedido": 'teste1',
+                "valor": 'teste1',
+                "dataCriacao": 'teste1'
+            }];
+            let teste2 = [{
+                "id": 'teste2',
+                "fornecedor": 'teste2',
+                "nomePedido": 'teste2',
+                "valor": 'teste2',
+                "dataPedido": 'teste2',
+                "previsaoChegada": 'teste2'
+            }];
+            let teste3 = [{
+                "id": 'teste3',
+                "fornecedor": 'teste3',
+                "nomePedido": 'teste3',
+                "valor": 'teste3',
+                "dataPedido": 'teste3',
+                "dataEntrega": 'teste3'
+            }];
+            insertRowPedido(teste1, 'pendente');
+            insertRowPedido(teste2, 'emAndamento');
+            insertRowPedido(teste3, 'finalizado');
+            // EXCLUIR
+        });
+
         function delTablePedido() {
             $('#bodyPedido').empty();
         }
@@ -166,7 +201,7 @@
             let quantidade = $("#qntdProduto").val();
 
             let valor = 185.19; // Necessário pegar o valor do produto no banco de dados
-            valor = (valor * quantidade).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });;
+            valor = (valor * quantidade).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 
             let dataInsercao = new Date().toLocaleDateString('pt-BR', { timeZone: 'UTC' });
 
@@ -189,8 +224,148 @@
 
         function endSession() {
             sessionStorage.setItem('status', "null");
-            window.location.href = "home-login-admin.html";
+            window.location.href = "home-login.html";
             $("#sair").html('');
+        }
+
+        function postPedido() {
+            let pedido = [];
+
+            let fornecedor = '';
+            let produto = '';
+            let quantidade = 0;
+            let preco = 0.0;
+
+            let rows = $('#bodyPedido > tr');
+
+            for (row in rows) {
+                let cols = $(row + ' > td');
+
+                fornecedor = $(cols[0]).html();
+                nome = $(cols[1]).html();
+                quantidade = $(cols[2]).html();
+                preco = $(cols[3]).html();
+
+                pedido.push(
+                    {
+                        "fornecedor": fornecedor,
+                        "produto": nome,
+                        "quantidade": quantidade,
+                        "preco": preco
+                    }
+                );
+            }
+
+            // REQUISIÇÃO PARA O BACKEND
+            $.ajax({
+                type: "POST",
+                url: "/pedidoFornecedor",
+                data: { "pedido": pedido },
+                dataType: "json",
+                success: function (success) {
+                    alert("Pedido criado com sucesso.");
+                    $('#bodyPedido').html('');
+                },
+                failure: function (errMsg) {
+                    alert("Falha ao criar o pedido.");
+                }
+            });
+        }
+
+        function insertRowPedido(pedidos, tabela) {
+            if (tabela == 'pendente') {
+                for (let i = 0; i < pedidos.length; i++) {
+                    $('#pedidoPendente').append(`
+                        <tr>
+                            <td>` + pedidos[i]['id'] + `</td>
+                            <td>` + pedidos[i]['fornecedor'] + `</td>
+                            <td>` + pedidos[i]['nomePedido'] + `</td>
+                            <td>` + pedidos[i]['valor'] + `</td>
+                            <td>` + pedidos[i]['dataCriacao'] + `</td>
+                        </tr>
+                    `);
+                }
+            }
+
+            if (tabela == 'emAndamento') {
+                for (let i = 0; i < pedidos.length; i++) {
+                    $('#pedidoEmAndamento').append(`
+                        <tr>
+                            <td>` + pedidos[i]['id'] + `</td>
+                            <td>` + pedidos[i]['fornecedor'] + `</td>
+                            <td>` + pedidos[i]['nomePedido'] + `</td>
+                            <td>` + pedidos[i]['valor'] + `</td>
+                            <td>` + pedidos[i]['dataPedido'] + `</td>
+                            <td>` + pedidos[i]['previsaoChegada'] + `</td>
+                        </tr>
+                    `);
+                }
+            }
+
+            if (tabela == 'finalizado') {
+                for (let i = 0; i < pedidos.length; i++) {
+                    $('#pedidoFinalizado').append(`
+                        <tr>
+                            <td>` + pedidos[i]['id'] + `</td>
+                            <td>` + pedidos[i]['fornecedor'] + `</td>
+                            <td>` + pedidos[i]['nomePedido'] + `</td>
+                            <td>` + pedidos[i]['valor'] + `</td>
+                            <td>` + pedidos[i]['dataPedido'] + `</td>
+                            <td>` + pedidos[i]['dataEntrega'] + `</td>
+                        </tr>
+                    `);
+                }
+            }
+
+
+        }
+
+        function getPedidosPendentes() {
+            // REQUISIÇÃO PARA O BACKEND
+            $.ajax({
+                type: "GET",
+                url: "/pedidosPendentes",
+                data: {},
+                dataType: "json",
+                success: function (pedidos) {
+                    insertRowPedido(pedidos, 'pendente');
+                },
+                failure: function (errMsg) {
+                    alert("Falha no carregamento dos pedidos.");
+                }
+            });
+        }
+
+        function getPedidosEmAndamento() {
+            // REQUISIÇÃO PARA O BACKEND
+            $.ajax({
+                type: "GET",
+                url: "/pedidosEmAndamento",
+                data: {},
+                dataType: "json",
+                success: function (pedidos) {
+                    insertRowPedido(pedidos, 'emAndamento');
+                },
+                failure: function (errMsg) {
+                    alert("Falha no carregamento dos pedidos.");
+                }
+            });
+        }
+
+        function getPedidosFinalizados() {
+            // REQUISIÇÃO PARA O BACKEND
+            $.ajax({
+                type: "GET",
+                url: "/pedidosFinalizados",
+                data: {},
+                dataType: "json",
+                success: function (pedidos) {
+                    insertRowPedido(pedidos, 'finalizado');
+                },
+                failure: function (errMsg) {
+                    alert("Falha no carregamento dos pedidos.");
+                }
+            });
         }
     </script>
 
@@ -213,7 +388,7 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right" style="margin-right: 32%; margin-top: 8px;">
                     <li>
-                        <form class="form-inline" action="/action_page.php">
+                        <form class="form-inline">
                             <input style="width: 300px;" class="form-control mr-sm-2" type="text"
                                 placeholder="Funcionalidade">
                             <button class="btn btn-success" type="submit">Buscar</button>
@@ -271,7 +446,7 @@
 
                 <div style="position: absolute; top: 224px; right: 182px;">
                     <div style="clear: both; margin-left: auto; width: 103px; padding-top: 40px;"><button type="submit"
-                            class="btn btn-primary mb-2 btnPedido" onclick="criarPedido()">Criar pedido</button>
+                            class="btn btn-primary mb-2 btnPedido" onclick="postPedido()">Criar pedido</button>
                     </div>
                 </div>
 
@@ -400,7 +575,7 @@
                                                 placeholder="Data de criação" disabled></th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="pedidoPendente">
                                     <tr>
                                         <td>1</td>
                                         <td>Fornecedor 1</td>
@@ -491,7 +666,7 @@
                                                 placeholder="Previsão de chegada" disabled></th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="pedidoEmAndamento">
                                     <tr>
                                         <td>1</td>
                                         <td>Fornecedor 1</td>
@@ -589,7 +764,7 @@
                                                 placeholder="Data de entrega" disabled></th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="pedidoFinalizado">
                                     <tr>
                                         <td>1</td>
                                         <td>Fornecedor 1</td>

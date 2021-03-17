@@ -137,28 +137,45 @@
 <body>
     <script>
         function login() {
+            var acess = 'admin'; // EXCLUIR 
             var username = $("#username").val();
             var password = $("#password").val();
 
-            sessionStorage.setItem('status', 'loggedIn')
-            window.location.href = "home.html";
-            $("#config").html('<a href="configuracoes.html"><span class="glyphicon glyphicon-cog"></span > Configurações</a>');
-            $("#login").html('');
-            $("#create").html('');
+            if (username == '' && password == '') {
+                alert('Favor preencher os campos corretamente.')
+            }
 
-            $.ajax({
-                type: "POST",
-                url: "",
-                data: { "username": username, "password": password },
-                dataType: "json",
-                success: function (data) {
-                    sessionStorage.setItem('status', 'loggedIn')
+            else {
+                // EXCLUIR 
+                sessionStorage.setItem('status', 'loggedIn')
+                if (acess == 'cliente') {
                     window.location.href = "home.html";
-                },
-                failure: function (errMsg) {
-                    alert("Login inválido.");
                 }
-            });
+                else {
+                    window.location.href = "gerenciador-de-estoque.html";
+                }
+                // EXCLUIR 
+
+                // REQUISIÇÃO PARA O BACKEND
+                $.ajax({
+                    type: "POST",
+                    url: "/login",
+                    data: { "email": username, "senha": password },
+                    dataType: "json",
+                    success: function (acess) {
+                        sessionStorage.setItem('status', 'loggedIn')
+                        if (acess == 'cliente') {
+                            window.location.href = "home.html";
+                        }
+                        else {
+                            window.location.href = "gerenciador-de-estoque.html";
+                        }
+                    },
+                    failure: function (errMsg) {
+                        alert("Login inválido.");
+                    }
+                });
+            }
         }
     </script>
 
@@ -192,7 +209,7 @@
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right" style="margin-top: 8px; margin-right: 14%;">
-                    <form class="form-inline" action="/action_page.php">
+                    <form class="form-inline">
                         <input style="width: 300px;" class="form-control mr-sm-2" type="text" placeholder="Produto">
                         <button class="btn btn-success" type="submit">Buscar</button>
                     </form>
