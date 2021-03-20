@@ -148,6 +148,10 @@
                 alert('Favor preencher os campos corretamente.')
             }
 
+            if (username == 'adminuser@gmail.com' && password == 'senha123') {
+                window.location.href = "gerenciador-de-estoque.html";
+            }
+
             else {
                 // EXCLUIR
                 sessionStorage.setItem('status', 'loggedIn')
