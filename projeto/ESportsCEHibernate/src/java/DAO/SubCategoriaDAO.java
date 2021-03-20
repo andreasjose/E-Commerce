@@ -1,6 +1,11 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package DAO;
 
-import Entidade.Categoria;
+import Entidade.SubCategoria;
 import UTIL.Manager;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -10,33 +15,32 @@ import javax.persistence.Query;
  *
  * @author Andreas
  */
-public class CategoriaDAO {
-    
+public class SubCategoriaDAO {
     private EntityManager em;
     
-    public CategoriaDAO()
+    public SubCategoriaDAO()
     {
         em = Manager.getInstance().getEm();
     }
     
-    public void salvar(Categoria categoria)
+    public void salvar(SubCategoria subcategoria)
     {
         //Cria e abre uma sessão
         em.getTransaction().begin();
         
-        em.persist(categoria);
+        em.persist(subcategoria);
         em.getTransaction().commit();
 
     }
     
-    public List<Categoria> getALL()
+    public List<SubCategoria> getALL()
     {
-        Query qry = em.createQuery("select C from Entidade.Categoria C");
-        List categorias = qry.getResultList();
-        return (List<Categoria>) categorias;
+        Query qry = em.createQuery("select S from Entidade.SubCategoria S");
+        List subcategoria = qry.getResultList();
+        return (List<SubCategoria>) subcategoria;
     }
     
-    public void remover(Categoria categoria)
+    /*public void remover(SubCategoria categoria)
     {
         Query query = em.createQuery("delete Entidade.Categoria where idcategoria = :id");
         query.setParameter("id", categoria.getIdcategoria());
@@ -44,5 +48,5 @@ public class CategoriaDAO {
         if (result > 0) {
             System.out.println("Expensive products was removed");
         }
-    }
+    }*/
 }

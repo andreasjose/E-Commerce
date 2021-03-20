@@ -5,39 +5,40 @@
  */
 package DAO;
 
-import Entidade.AuxProdutoFoto;
+/**
+ *
+ * @author Andreas
+ */
+
+import Entidade.Produto;
 import UTIL.Manager;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-/**
- *
- * @author Andreas
- */
-public class AuxProdutoFotoDAO {
+public class ProdutoDAO {
    
     private EntityManager em;
     
-    public AuxProdutoFotoDAO()
+    public ProdutoDAO()
     {
         em = Manager.getInstance().getEm();
     }
     
-    public void salvar(AuxProdutoFoto auxprodutofoto)
+    public void salvar(Produto produto)
     {
         //Cria e abre uma sessão
         em.getTransaction().begin();
         
-        em.persist(auxprodutofoto);
+        em.persist(produto);
         em.getTransaction().commit();
 
-    }    
+    }
     
-    public List<AuxProdutoFoto> getALL()
+    public List<Produto> getALL()
     {
-        Query qry = em.createQuery("Select a from auxprodutofoto a");
-        List auxprodutofoto = qry.getResultList();
-        return (List<AuxProdutoFoto>) auxprodutofoto;
+        Query qry = em.createQuery("select p from Entidade.produto p");
+        List produto = qry.getResultList();
+        return (List<Produto>) produto;
     }
 }

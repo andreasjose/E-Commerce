@@ -5,7 +5,7 @@
  */
 package DAO;
 
-import Entidade.Usuario;
+import Entidade.Estoque;
 import UTIL.Manager;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -15,40 +15,39 @@ import javax.persistence.Query;
  *
  * @author Andreas
  */
-public class UsuarioDAO {
+public class EstoqueDAO {
     
     private EntityManager em;
     
-    public UsuarioDAO()
+    public EstoqueDAO()
     {
         em = Manager.getInstance().getEm();
     }
     
-    public void salvar(Usuario usuario)
+    public void salvar(Estoque estoque)
     {
         //Cria e abre uma sessão
         em.getTransaction().begin();
         
-        em.persist(usuario);
+        em.persist(estoque);
         em.getTransaction().commit();
 
     }
     
-    public List<Usuario> getALL()
+    public List<Estoque> getALL()
     {
-        Query qry = em.createQuery("select U from Entidade.Usuario U");
-        List usuarios = qry.getResultList();
-        return (List<Usuario>) usuarios;
+        Query qry = em.createQuery("select E from Entidade.Estoque E");
+        List produtos = qry.getResultList();
+        return (List<Estoque>) produtos;
     }
     
-    public void remover(Usuario usuario)
+    public void remover(Estoque estoque)
     {
-        Query query = em.createQuery("delete Entidade.Usuario where idusuario = :id");
-        query.setParameter("id", usuario.getIdusuario());
+        Query query = em.createQuery("delete Entidade.Estoque where idestoque = :id");
+        query.setParameter("id", estoque.getIdestoque());
         int result = query.executeUpdate();
         if (result > 0) {
             System.out.println("Expensive products was removed");
         }
     }
-        
 }

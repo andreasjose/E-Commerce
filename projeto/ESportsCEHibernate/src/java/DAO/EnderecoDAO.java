@@ -5,7 +5,8 @@
  */
 package DAO;
 
-import Entidade.AuxProdutoFoto;
+
+import Entidade.Endereco;
 import UTIL.Manager;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -15,29 +16,30 @@ import javax.persistence.Query;
  *
  * @author Andreas
  */
-public class AuxProdutoFotoDAO {
-   
+public class EnderecoDAO {
+    
+    
     private EntityManager em;
     
-    public AuxProdutoFotoDAO()
+    public EnderecoDAO()
     {
         em = Manager.getInstance().getEm();
     }
     
-    public void salvar(AuxProdutoFoto auxprodutofoto)
+    public void salvar(Endereco endereco)
     {
         //Cria e abre uma sessão
         em.getTransaction().begin();
         
-        em.persist(auxprodutofoto);
+        em.persist(endereco);
         em.getTransaction().commit();
 
-    }    
+    }
     
-    public List<AuxProdutoFoto> getALL()
+    public List<Endereco> getALL()
     {
-        Query qry = em.createQuery("Select a from auxprodutofoto a");
-        List auxprodutofoto = qry.getResultList();
-        return (List<AuxProdutoFoto>) auxprodutofoto;
+        Query qry = em.createQuery("select E from Entidade.Endereco E");
+        List enderecos = qry.getResultList();
+        return (List<Endereco>) enderecos;
     }
 }
