@@ -36,28 +36,6 @@
 
 <body>
     <script>
-        $(document).ready(function () {
-            if (sessionStorage.getItem('status') != null && sessionStorage.getItem('status') != "null") {
-                $("#config").html('<a href="configuracoes.html"><span class="glyphicon glyphicon-cog"></span> Configurações</a>');
-                $("#login").html('');
-                $("#create").html('');
-            }
-
-            // REQUISIÇÃO PARA O BACKEND
-            $.ajax({
-                type: "GET",
-                url: "/feminino",
-                data: {},
-                dataType: "json",
-                success: function (products) {
-                    insertProduct(products);
-                },
-                failure: function (errMsg) {
-                    alert("Falha no carregamento dos produtos.");
-                }
-            });
-        });
-
         function insertProduct(products) {
             while (products.length > 0) {
                 if (products.length >= 3) {
@@ -215,6 +193,64 @@
         }
 
         function goToProduct(product) {
+            var jsonProducts = [
+                {
+                    "id": 25,
+                    "img": "imgs/feminino1.jpg",
+                    "produto": "Camiseta Origens Bike Esporte",
+                    "descricao": "Confortáveis, estilosas e com acabamento fino.",
+                    "preco": 55.92,
+                    "categoria": "feminino"
+                },
+                {
+                    "id": 26,
+                    "img": "imgs/feminino2.jpg",
+                    "produto": "Camiseta Olympikus NS",
+                    "descricao": "Produzida com material leve e com corte levemente acinturado.",
+                    "preco": 29.99,
+                    "categoria": "feminino"
+                },
+                {
+                    "id": 27,
+                    "img": "imgs/feminino3.webp",
+                    "produto": "Calça Legging Nike Pro Tight",
+                    "descricao": "Ótima calça para a prática de atividades físicas.",
+                    "preco": 169.99,
+                    "categoria": "feminino"
+                },
+                {
+                    "id": 28,
+                    "img": "imgs/feminino4.jpg",
+                    "produto": "Short Boxer Preta",
+                    "descricao": "Short com elástico esportivo.",
+                    "preco": 29.99,
+                    "categoria": "feminino"
+                },
+                {
+                    "id": 29,
+                    "img": "imgs/feminino5.jpg",
+                    "produto": "Andoer Shorts de corrida",
+                    "descricao": "Feito de poliéster e tecido de mistura de spandex.",
+                    "preco": 100.99,
+                    "categoria": "feminino"
+                },
+                {
+                    "id": 30,
+                    "img": "imgs/feminino6.jpg",
+                    "produto": "Top Suplex Nadador Academia",
+                    "descricao": "Kit com 3 tops nadador diversas cores.",
+                    "preco": 39.90,
+                    "categoria": "feminino"
+                }
+            ];
+
+            for (let i = 0; i < jsonProducts.length; i++) {
+                if (parseInt(jsonProducts[i]["id"]) == parseInt($(product.target).attr('id'))) {
+                    var jsonProduct = jsonProducts[i];
+                    localStorage.setItem("produtoEscolhido", JSON.stringify(jsonProduct));
+                }
+            }
+
             window.location.href = "produto.html?produto=" + $(product.target).attr('id');
         }
     </script>
@@ -272,6 +308,82 @@
         <p>Copyright &copy; 2021 E-commerce</p>
     </footer>
 
+    <script>
+        $(document).ready(function () {
+            if (sessionStorage.getItem('status') != null && sessionStorage.getItem('status') != "null") {
+                $("#config").html('<a href="configuracoes.html"><span class="glyphicon glyphicon-cog"></span> Configurações</a>');
+                $("#login").html('');
+                $("#create").html('');
+            }
+
+            // REQUISIÇÃO PARA O BACKEND
+            $.ajax({
+                type: "GET",
+                url: "/feminino",
+                data: {},
+                dataType: "json",
+                success: function (products) {
+                    insertProduct(products);
+                },
+                failure: function (errMsg) {
+                    alert("Falha no carregamento dos produtos.");
+                }
+            });
+
+            var jsonProducts = [
+                {
+                    "id": 25,
+                    "img": "imgs/feminino1.jpg",
+                    "produto": "Camiseta Origens Bike Esporte",
+                    "descricao": "Confortáveis, estilosas e com acabamento fino.",
+                    "preco": 55.92,
+                    "categoria": "feminino"
+                },
+                {
+                    "id": 26,
+                    "img": "imgs/feminino2.jpg",
+                    "produto": "Camiseta Olympikus NS",
+                    "descricao": "Produzida com material leve e com corte levemente acinturado.",
+                    "preco": 29.99,
+                    "categoria": "feminino"
+                },
+                {
+                    "id": 27,
+                    "img": "imgs/feminino3.webp",
+                    "produto": "Calça Legging Nike Pro Tight",
+                    "descricao": "Ótima calça para a prática de atividades físicas.",
+                    "preco": 169.99,
+                    "categoria": "feminino"
+                },
+                {
+                    "id": 28,
+                    "img": "imgs/feminino4.jpg",
+                    "produto": "Short Boxer Preta",
+                    "descricao": "Short com elástico esportivo.",
+                    "preco": 29.99,
+                    "categoria": "feminino"
+                },
+                {
+                    "id": 29,
+                    "img": "imgs/feminino5.jpg",
+                    "produto": "Andoer Shorts de corrida",
+                    "descricao": "Feito de poliéster e tecido de mistura de spandex.",
+                    "preco": 100.99,
+                    "categoria": "feminino"
+                },
+                {
+                    "id": 30,
+                    "img": "imgs/feminino6.jpg",
+                    "produto": "Top Suplex Nadador Academia",
+                    "descricao": "Kit com 3 tops nadador diversas cores.",
+                    "preco": 39.90,
+                    "categoria": "feminino"
+                }
+            ];
+
+            insertProduct(jsonProducts);
+        });
+    </script>
 </body>
 
 </html>

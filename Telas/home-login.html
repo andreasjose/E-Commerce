@@ -140,6 +140,7 @@
 <body>
     <script>
         function login() {
+            var acess = 'cliente'; // EXCLUIR
             var username = $("#username").val();
             var password = $("#password").val();
 
@@ -148,6 +149,16 @@
             }
 
             else {
+                // EXCLUIR
+                sessionStorage.setItem('status', 'loggedIn')
+                if (acess == 'cliente') {
+                    window.location.href = "home.html";
+                }
+                else {
+                    window.location.href = "gerenciador-de-estoque.html";
+                }
+                // EXCLUIR
+
                 // REQUISIÇÃO PARA O BACKEND
                 $.ajax({
                     type: "POST",

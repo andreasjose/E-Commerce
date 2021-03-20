@@ -36,28 +36,6 @@
 
 <body>
     <script>
-        $(document).ready(function () {
-            if (sessionStorage.getItem('status') != null && sessionStorage.getItem('status') != "null") {
-                $("#config").html('<a href="configuracoes.html"><span class="glyphicon glyphicon-cog"></span> Configurações</a>');
-                $("#login").html('');
-                $("#create").html('');
-            }
-
-            // REQUISIÇÃO PARA O BACKEND
-            $.ajax({
-                type: "GET",
-                url: "/equipamentos",
-                data: {},
-                dataType: "json",
-                success: function (products) {
-                    insertProduct(products);
-                },
-                failure: function (errMsg) {
-                    alert("Falha no carregamento dos produtos.");
-                }
-            });
-        });
-
         function insertProduct(products) {
             while (products.length > 0) {
                 if (products.length >= 3) {
@@ -215,6 +193,64 @@
         }
 
         function goToProduct(product) {
+            var jsonProducts = [
+                {
+                    "id": 13,
+                    "img": "imgs/equipamento1.jpg",
+                    "produto": "Bicicleta Ergométrica BP-880",
+                    "descricao": "Confeccionada em aço carbono, ótimo para o uso residencial.",
+                    "preco": 451.74,
+                    "categoria": "equipamentos"
+                },
+                {
+                    "id": 14,
+                    "img": "imgs/equipamento2.jpg",
+                    "produto": "Roda de Exercício, Vollo Sports",
+                    "descricao": "Garante um trabalho espetacular para os músculos estabilizadores da coluna.",
+                    "preco": 75.80,
+                    "categoria": "equipamentos"
+                },
+                {
+                    "id": 15,
+                    "img": "imgs/equipamento3.jpg",
+                    "produto": "Fita De Treinamento Suspenso-funcional-pilates",
+                    "descricao": "Fita extensora de 2 metros para prender a Fita de treinamento em árvore e pilar",
+                    "preco": 99.90,
+                    "categoria": "equipamentos"
+                },
+                {
+                    "id": 16,
+                    "img": "imgs/equipamento4.jpg",
+                    "produto": "Kit Kettlebell",
+                    "descricao": "Ótimo kit para a realização de diversos tipos de exercício.",
+                    "preco": 303.74,
+                    "categoria": "equipamentos"
+                },
+                {
+                    "id": 17,
+                    "img": "imgs/equipamento5.jpg",
+                    "produto": "Kit Tubing Elástico Extensor",
+                    "descricao": "Cada elástico tem 1,20 m de comprimento e diferentes resistências.",
+                    "preco": 63.00,
+                    "categoria": "equipamentos"
+                },
+                {
+                    "id": 18,
+                    "img": "imgs/equipamento6.jpg",
+                    "produto": "Par Peso Halter Academia Emborrachado",
+                    "descricao": "Halteres de 2kg, emborrachados para uma melhor aderência.",
+                    "preco": 59.90,
+                    "categoria": "equipamentos"
+                }
+            ];
+
+            for (let i = 0; i < jsonProducts.length; i++) {
+                if (parseInt(jsonProducts[i]["id"]) == parseInt($(product.target).attr('id'))) {
+                    var jsonProduct = jsonProducts[i];
+                    localStorage.setItem("produtoEscolhido", JSON.stringify(jsonProduct));
+                }
+            }
+
             window.location.href = "produto.html?produto=" + $(product.target).attr('id');
         }
     </script>
@@ -272,6 +308,82 @@
         <p>Copyright &copy; 2021 E-commerce</p>
     </footer>
 
+    <script>
+        $(document).ready(function () {
+            if (sessionStorage.getItem('status') != null && sessionStorage.getItem('status') != "null") {
+                $("#config").html('<a href="configuracoes.html"><span class="glyphicon glyphicon-cog"></span> Configurações</a>');
+                $("#login").html('');
+                $("#create").html('');
+            }
+
+            // REQUISIÇÃO PARA O BACKEND
+            $.ajax({
+                type: "GET",
+                url: "/equipamentos",
+                data: {},
+                dataType: "json",
+                success: function (products) {
+                    insertProduct(products);
+                },
+                failure: function (errMsg) {
+                    alert("Falha no carregamento dos produtos.");
+                }
+            });
+
+            var jsonProducts = [
+                {
+                    "id": 13,
+                    "img": "imgs/equipamento1.jpg",
+                    "produto": "Bicicleta Ergométrica BP-880",
+                    "descricao": "Confeccionada em aço carbono, ótimo para o uso residencial.",
+                    "preco": 451.74,
+                    "categoria": "equipamentos"
+                },
+                {
+                    "id": 14,
+                    "img": "imgs/equipamento2.jpg",
+                    "produto": "Roda de Exercício, Vollo Sports",
+                    "descricao": "Garante um trabalho espetacular para os músculos estabilizadores da coluna.",
+                    "preco": 75.80,
+                    "categoria": "equipamentos"
+                },
+                {
+                    "id": 15,
+                    "img": "imgs/equipamento3.jpg",
+                    "produto": "Fita De Treinamento Suspenso-funcional-pilates",
+                    "descricao": "Fita extensora de 2 metros para prender a Fita de treinamento em árvore e pilar",
+                    "preco": 99.90,
+                    "categoria": "equipamentos"
+                },
+                {
+                    "id": 16,
+                    "img": "imgs/equipamento4.jpg",
+                    "produto": "Kit Kettlebell",
+                    "descricao": "Ótimo kit para a realização de diversos tipos de exercício.",
+                    "preco": 303.74,
+                    "categoria": "equipamentos"
+                },
+                {
+                    "id": 17,
+                    "img": "imgs/equipamento5.jpg",
+                    "produto": "Kit Tubing Elástico Extensor",
+                    "descricao": "Cada elástico tem 1,20 m de comprimento e diferentes resistências.",
+                    "preco": 63.00,
+                    "categoria": "equipamentos"
+                },
+                {
+                    "id": 18,
+                    "img": "imgs/equipamento6.jpg",
+                    "produto": "Par Peso Halter Academia Emborrachado",
+                    "descricao": "Halteres de 2kg, emborrachados para uma melhor aderência.",
+                    "preco": 59.90,
+                    "categoria": "equipamentos"
+                }
+            ];
+
+            insertProduct(jsonProducts);
+        });
+    </script>
 </body>
 
 </html>

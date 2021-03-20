@@ -66,6 +66,23 @@
                     alert("Falha no carregamento do produto.");
                 }
             });
+
+            // EXCLUIR
+            var produto = '';
+            // iterate localStorage
+            for (var i = 0; i < localStorage.length; i++) {
+                // set iteration key name
+                var key = localStorage.key(i);
+
+                if (key == "produtoEscolhido") {
+                    produto = localStorage.getItem(key);
+                    break;
+                }
+            }
+            produto = JSON.parse(produto);
+            insertProduct(produto);
+            localStorage.removeItem("produtoEscolhido");
+            // EXCLUIR
         });
 
         function addProduct() {
