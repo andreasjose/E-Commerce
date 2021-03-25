@@ -193,56 +193,7 @@
         }
 
         function goToProduct(product) {
-            var jsonProducts = [
-                {
-                    "id": 19,
-                    "img": "imgs/masculino1.jpg",
-                    "produto": "Short de Compressão Nike Pro",
-                    "descricao": "Com leve compressão, é perfeito para te acompanhar nos exercícios.",
-                    "preco": 79.99,
-                    "categoria": "masculino"
-                },
-                {
-                    "id": 20,
-                    "img": "imgs/masculino2.webp",
-                    "produto": "BERMUDA ESPORTIVA DE FUTEBOL",
-                    "descricao": "Bermuda confortável com detalhes nas laterais em preto.",
-                    "preco": 59.90,
-                    "categoria": "masculino"
-                },
-                {
-                    "id": 21,
-                    "img": "imgs/masculino3.jpg",
-                    "produto": "CAMISETA MANGA CURTA TRACK&FIELD",
-                    "descricao": "Camiseta manga curta, corpo em tecido de algodão e poliéster.",
-                    "preco": 129.90,
-                    "categoria": "masculino"
-                },
-                {
-                    "id": 22,
-                    "img": "imgs/masculino4.png",
-                    "produto": "CAMISA LYCRA 702L",
-                    "descricao": "Camisa ótima para a prática de esportes radicais.",
-                    "preco": 117.00,
-                    "categoria": "masculino"
-                },
-                {
-                    "id": 23,
-                    "img": "imgs/masculino5.jpg",
-                    "produto": "CAMISETA DRY FLEXING",
-                    "descricao": "A camiseta Dry Flexing é mais um design exclusivo da linha Bulking Performance.",
-                    "preco": 119.00,
-                    "categoria": "masculino"
-                },
-                {
-                    "id": 24,
-                    "img": "imgs/masculino6.jpg",
-                    "produto": "Camiseta Adidas Core 18",
-                    "descricao": "Camiseta moderna, feita em material respirável.",
-                    "preco": 89.99,
-                    "categoria": "masculino"
-                }
-            ];
+            var jsonProducts = [];
 
             for (let i = 0; i < jsonProducts.length; i++) {
                 if (parseInt(jsonProducts[i]["id"]) == parseInt($(product.target).attr('id'))) {
@@ -330,56 +281,7 @@
                 }
             });
 
-            var jsonProducts = [
-                {
-                    "id": 19,
-                    "img": "imgs/masculino1.jpg",
-                    "produto": "Short de Compressão Nike Pro",
-                    "descricao": "Com leve compressão, é perfeito para te acompanhar nos exercícios.",
-                    "preco": 79.99,
-                    "categoria": "masculino"
-                },
-                {
-                    "id": 20,
-                    "img": "imgs/masculino2.webp",
-                    "produto": "BERMUDA ESPORTIVA DE FUTEBOL",
-                    "descricao": "Bermuda confortável com detalhes nas laterais em preto.",
-                    "preco": 59.90,
-                    "categoria": "masculino"
-                },
-                {
-                    "id": 21,
-                    "img": "imgs/masculino3.jpg",
-                    "produto": "CAMISETA MANGA CURTA TRACK&FIELD",
-                    "descricao": "Camiseta manga curta, corpo em tecido de algodão e poliéster.",
-                    "preco": 129.90,
-                    "categoria": "masculino"
-                },
-                {
-                    "id": 22,
-                    "img": "imgs/masculino4.png",
-                    "produto": "CAMISA LYCRA 702L",
-                    "descricao": "Camisa ótima para a prática de esportes radicais.",
-                    "preco": 117.00,
-                    "categoria": "masculino"
-                },
-                {
-                    "id": 23,
-                    "img": "imgs/masculino5.jpg",
-                    "produto": "CAMISETA DRY FLEXING",
-                    "descricao": "A camiseta Dry Flexing é mais um design exclusivo da linha Bulking Performance.",
-                    "preco": 119.00,
-                    "categoria": "masculino"
-                },
-                {
-                    "id": 24,
-                    "img": "imgs/masculino6.jpg",
-                    "produto": "Camiseta Adidas Core 18",
-                    "descricao": "Camiseta moderna, feita em material respirável.",
-                    "preco": 89.99,
-                    "categoria": "masculino"
-                }
-            ];
+            var jsonProducts = [];
 
             insertProduct(jsonProducts);
         });
