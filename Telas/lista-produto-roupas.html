@@ -193,56 +193,7 @@
         }
 
         function goToProduct(product) {
-            var jsonProducts = [
-                {
-                    "id": 7,
-                    "img": "imgs/roupa1.jpg",
-                    "produto": "Calça de Compressão Adidas Otr Long",
-                    "descricao": "Para quem busca desempenho durante o treino de corrida.",
-                    "preco": 174.99,
-                    "categoria": "roupas"
-                },
-                {
-                    "id": 8,
-                    "img": "imgs/roupa2.jpg",
-                    "produto": "Camiseta Nike Sportwear Icon Futura",
-                    "descricao": "Com o icônico logo da Nike estampado em destaque, essa camiseta masculina é a pedida certa.",
-                    "preco": 59.99,
-                    "categoria": "roupas"
-                },
-                {
-                    "id": 9,
-                    "img": "imgs/roupa3.jpg",
-                    "produto": "Bermuda Nike Monster Mesh 5.0",
-                    "descricao": "Treine pesado se sentindo mais fresco com a Bermuda Masculina Nike Monster Mesh 5.0!",
-                    "preco": 79.99,
-                    "categoria": "roupas"
-                },
-                {
-                    "id": 10,
-                    "img": "imgs/roupa4.jpg",
-                    "produto": "Nike Sportswear",
-                    "descricao": "Camiseta Nike Sportswear Nsw Tee Essntl.",
-                    "preco": 59.89,
-                    "categoria": "roupas"
-                },
-                {
-                    "id": 11,
-                    "img": "imgs/roupa5.jpg",
-                    "produto": "Moletom Adidas",
-                    "descricao": "Moletom Fechado adidas Originals Trefoil.",
-                    "preco": 229.99,
-                    "categoria": "roupas"
-                },
-                {
-                    "id": 12,
-                    "img": "imgs/roupa6.jpg",
-                    "produto": "Camiseta Adidas Must Haves Badge Of Sport",
-                    "descricao": "Com modelagem clássica, é ideal para as suas combinações urbanas cheia de atitude.",
-                    "preco": 46.49,
-                    "categoria": "roupas"
-                }
-            ];
+            var jsonProducts = [];
 
             for (let i = 0; i < jsonProducts.length; i++) {
                 if (parseInt(jsonProducts[i]["id"]) == parseInt($(product.target).attr('id'))) {
@@ -309,56 +260,7 @@
     </footer>
 
     <script>
-        var jsonProducts = [
-            {
-                "id": 7,
-                "img": "imgs/roupa1.jpg",
-                "produto": "Calça de Compressão Adidas Otr Long",
-                "descricao": "Para quem busca desempenho durante o treino de corrida.",
-                "preco": 174.99,
-                "categoria": "roupas"
-            },
-            {
-                "id": 8,
-                "img": "imgs/roupa2.jpg",
-                "produto": "Camiseta Nike Sportwear Icon Futura",
-                "descricao": "Com o icônico logo da Nike estampado em destaque, essa camiseta masculina é a pedida certa.",
-                "preco": 59.99,
-                "categoria": "roupas"
-            },
-            {
-                "id": 9,
-                "img": "imgs/roupa3.jpg",
-                "produto": "Bermuda Nike Monster Mesh 5.0",
-                "descricao": "Treine pesado se sentindo mais fresco com a Bermuda Masculina Nike Monster Mesh 5.0!",
-                "preco": 79.99,
-                "categoria": "roupas"
-            },
-            {
-                "id": 10,
-                "img": "imgs/roupa4.jpg",
-                "produto": "Nike Sportswear",
-                "descricao": "Camiseta Nike Sportswear Nsw Tee Essntl.",
-                "preco": 59.89,
-                "categoria": "roupas"
-            },
-            {
-                "id": 11,
-                "img": "imgs/roupa5.jpg",
-                "produto": "Moletom Adidas",
-                "descricao": "Moletom Fechado adidas Originals Trefoil.",
-                "preco": 229.99,
-                "categoria": "roupas"
-            },
-            {
-                "id": 12,
-                "img": "imgs/roupa6.jpg",
-                "produto": "Camiseta Adidas Must Haves Badge Of Sport",
-                "descricao": "Com modelagem clássica, é ideal para as suas combinações urbanas cheia de atitude.",
-                "preco": 46.49,
-                "categoria": "roupas"
-            }
-        ];
+        var jsonProducts = [];
 
         $(document).ready(function () {
             if (sessionStorage.getItem('status') != null && sessionStorage.getItem('status') != "null") {

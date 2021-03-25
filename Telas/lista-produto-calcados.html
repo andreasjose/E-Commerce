@@ -193,56 +193,7 @@
         }
 
         function goToProduct(product) {
-            var jsonProducts = [
-                {
-                    "id": 1,
-                    "img": "imgs/calcado1.jpg",
-                    "produto": "Tênis Adidas Run Falcon",
-                    "descricao": "Ideal para corredores iniciantes, contando com amortecimento leve, reforço no calcanhar",
-                    "preco": 129.99,
-                    "categoria": "calcados"
-                },
-                {
-                    "id": 2,
-                    "img": "imgs/calcado2.jpg",
-                    "produto": "Tênis Adidas Grand Court",
-                    "descricao": "Inspirado nos tênis clássicos dos anos 70, é ideal para os homens que buscam dar uma repaginada no visual.",
-                    "preco": 149.99,
-                    "categoria": "calcados"
-                },
-                {
-                    "id": 3,
-                    "img": "imgs/calcado3.jpg",
-                    "produto": "Tênis FluidStreet",
-                    "descricao": "Tênis de corrida adidas que garante uma sensação respirável e de amortecimento macio.",
-                    "preco": 349.99,
-                    "categoria": "calcados"
-                },
-                {
-                    "id": 4,
-                    "img": "imgs/calcado4.jpg",
-                    "produto": "Tênis Nike Downshifter 10",
-                    "descricao": "Traz amortecimento e suporte atualizados, para garantir uma corrida estável e confortável.",
-                    "preco": 199.99,
-                    "categoria": "calcados"
-                },
-                {
-                    "id": 5,
-                    "img": "imgs/calcado5.jpg",
-                    "produto": "Tênis Nike Revolution 5",
-                    "descricao": "Com ótimo amortecimento em espuma, é ideal para os corredores que buscam leveza e conforto.",
-                    "preco": 189.99,
-                    "categoria": "calcados"
-                },
-                {
-                    "id": 6,
-                    "img": "imgs/calcado6.jpg",
-                    "produto": "Tênis Nike Court Lite 2",
-                    "descricao": "A escolha certa para você, conta com amortecimento Phylon para maior leveza aos seus pés.",
-                    "preco": 170.99,
-                    "categoria": "calcados"
-                }
-            ];
+            var jsonProducts = [];
 
             for (let i = 0; i < jsonProducts.length; i++) {
                 if (parseInt(jsonProducts[i]["id"]) == parseInt($(product.target).attr('id'))) {
@@ -330,56 +281,7 @@
                 }
             });
 
-            var jsonProducts = [
-                {
-                    "id": 1,
-                    "img": "imgs/calcado1.jpg",
-                    "produto": "Tênis Adidas Run Falcon",
-                    "descricao": "Ideal para corredores iniciantes, contando com amortecimento leve, reforço no calcanhar",
-                    "preco": 129.99,
-                    "categoria": "calcados"
-                },
-                {
-                    "id": 2,
-                    "img": "imgs/calcado2.jpg",
-                    "produto": "Tênis Adidas Grand Court",
-                    "descricao": "Inspirado nos tênis clássicos dos anos 70, é ideal para os homens que buscam dar uma repaginada no visual.",
-                    "preco": 149.99,
-                    "categoria": "calcados"
-                },
-                {
-                    "id": 3,
-                    "img": "imgs/calcado3.jpg",
-                    "produto": "Tênis FluidStreet",
-                    "descricao": "Tênis de corrida adidas que garante uma sensação respirável e de amortecimento macio.",
-                    "preco": 349.99,
-                    "categoria": "calcados"
-                },
-                {
-                    "id": 4,
-                    "img": "imgs/calcado4.jpg",
-                    "produto": "Tênis Nike Downshifter 10",
-                    "descricao": "Traz amortecimento e suporte atualizados, para garantir uma corrida estável e confortável.",
-                    "preco": 199.99,
-                    "categoria": "calcados"
-                },
-                {
-                    "id": 5,
-                    "img": "imgs/calcado5.jpg",
-                    "produto": "Tênis Nike Revolution 5",
-                    "descricao": "Com ótimo amortecimento em espuma, é ideal para os corredores que buscam leveza e conforto.",
-                    "preco": 189.99,
-                    "categoria": "calcados"
-                },
-                {
-                    "id": 6,
-                    "img": "imgs/calcado6.jpg",
-                    "produto": "Tênis Nike Court Lite 2",
-                    "descricao": "A escolha certa para você, conta com amortecimento Phylon para maior leveza aos seus pés.",
-                    "preco": 170.99,
-                    "categoria": "calcados"
-                }
-            ];
+            var jsonProducts = [];
 
             insertProduct(jsonProducts);
         });

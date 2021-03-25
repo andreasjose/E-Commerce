@@ -193,56 +193,7 @@
         }
 
         function goToProduct(product) {
-            var jsonProducts = [
-                {
-                    "id": 31,
-                    "img": "imgs/infantil1.jpg",
-                    "produto": "CAMISETA MANGA LONGA PROTEÇÃO SOLAR",
-                    "descricao": "Desenvolvida para o praticante iniciante de 4 a 10 anos.",
-                    "preco": 29.99,
-                    "categoria": "infantil"
-                },
-                {
-                    "id": 32,
-                    "img": "imgs/infantil2.jpg",
-                    "produto": "SAIA-SHORTS INFANTIL DE GINÁSTICA",
-                    "descricao": "Saia-shorts foram concebidos para a prática de ginástica em exercícios.",
-                    "preco": 59.99,
-                    "categoria": "infantil"
-                },
-                {
-                    "id": 33,
-                    "img": "imgs/infantil3.jpg",
-                    "produto": "MAIÔ DE NATAÇÃO LEONY INFANTIL",
-                    "descricao": "Maiô de natação para as nadadoras que buscam conforto na hora de nadar.",
-                    "preco": 49.99,
-                    "categoria": "infantil"
-                },
-                {
-                    "id": 34,
-                    "img": "imgs/infantil4.jpg",
-                    "produto": "SAIA DE DANÇA CLÁSSICA INFANTIL",
-                    "descricao": "Desenvolvido para completar de forma harmoniosa a sua indumentária de dança clássica.",
-                    "preco": 29.99,
-                    "categoria": "infantil"
-                },
-                {
-                    "id": 35,
-                    "img": "imgs/infantil5.jpg",
-                    "produto": "SAIA INFANTIL DE TÊNIS DRY 100",
-                    "descricao": "Esta saia foi desenvolvida para a pratica de tênis e outros esportes de raquete.",
-                    "preco": 34.99,
-                    "categoria": "infantil"
-                },
-                {
-                    "id": 36,
-                    "img": "imgs/infantil6.jpg",
-                    "produto": "SHORTS DE FUTEBOL INFANTIL F500",
-                    "descricao": "Desenvolvido para a prática de futebol.",
-                    "preco": 44.99,
-                    "categoria": "infantil"
-                }
-            ];
+            var jsonProducts = [];
 
             for (let i = 0; i < jsonProducts.length; i++) {
                 if (parseInt(jsonProducts[i]["id"]) == parseInt($(product.target).attr('id'))) {
@@ -330,56 +281,7 @@
                 }
             });
 
-            var jsonProducts = [
-                {
-                    "id": 31,
-                    "img": "imgs/infantil1.jpg",
-                    "produto": "CAMISETA MANGA LONGA PROTEÇÃO SOLAR",
-                    "descricao": "Desenvolvida para o praticante iniciante de 4 a 10 anos.",
-                    "preco": 29.99,
-                    "categoria": "infantil"
-                },
-                {
-                    "id": 32,
-                    "img": "imgs/infantil2.jpg",
-                    "produto": "SAIA-SHORTS INFANTIL DE GINÁSTICA",
-                    "descricao": "Saia-shorts foram concebidos para a prática de ginástica em exercícios.",
-                    "preco": 59.99,
-                    "categoria": "infantil"
-                },
-                {
-                    "id": 33,
-                    "img": "imgs/infantil3.jpg",
-                    "produto": "MAIÔ DE NATAÇÃO LEONY INFANTIL",
-                    "descricao": "Maiô de natação para as nadadoras que buscam conforto na hora de nadar.",
-                    "preco": 49.99,
-                    "categoria": "infantil"
-                },
-                {
-                    "id": 34,
-                    "img": "imgs/infantil4.jpg",
-                    "produto": "SAIA DE DANÇA CLÁSSICA INFANTIL",
-                    "descricao": "Desenvolvido para completar de forma harmoniosa a sua indumentária de dança clássica.",
-                    "preco": 29.99,
-                    "categoria": "infantil"
-                },
-                {
-                    "id": 35,
-                    "img": "imgs/infantil5.jpg",
-                    "produto": "SAIA INFANTIL DE TÊNIS DRY 100",
-                    "descricao": "Esta saia foi desenvolvida para a pratica de tênis e outros esportes de raquete.",
-                    "preco": 34.99,
-                    "categoria": "infantil"
-                },
-                {
-                    "id": 36,
-                    "img": "imgs/infantil6.jpg",
-                    "produto": "SHORTS DE FUTEBOL INFANTIL F500",
-                    "descricao": "Desenvolvido para a prática de futebol.",
-                    "preco": 44.99,
-                    "categoria": "infantil"
-                }
-            ];
+            var jsonProducts = [];
 
             insertProduct(jsonProducts);
         });
