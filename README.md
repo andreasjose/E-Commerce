@@ -21,7 +21,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 * [Story Maps](https://github.com/andreasjose/E-Commerce/blob/main/Documentos/Story%20maps.pdf)
 * [Product Backlog](https://github.com/andreasjose/E-Commerce/blob/main/Documentos/Product%20Backlog/V4-Product%20Backlog.pdf)
 * [Documento Técnico](https://github.com/andreasjose/E-Commerce/blob/main/Documentos/Documento%20t%C3%A9cnico/V3-Documento%20T%C3%A9cnico.pdf)
-* [Protótipo](https://github.com/andreasjose/E-Commerce/blob/main/Prot%C3%B3tipo%20de%20Telas/Prot%C3%B3tipo%20de%20telas%20v3.pdf)
+* [Protótipo de Telas](https://github.com/andreasjose/E-Commerce/blob/main/Prot%C3%B3tipo%20de%20Telas/Prot%C3%B3tipo%20de%20telas%20v4.pdf)
 * [Casos de Uso](https://github.com/andreasjose/E-Commerce/blob/main/Diagramas/Casos%20de%20uso%20v2.pdf)
 * [Diagrama de Classes](https://github.com/andreasjose/E-Commerce/blob/main/Diagramas/Diagrama%20de%20classes%20v2.pdf)
 * [Diagramas de Atividade](https://github.com/andreasjose/E-Commerce/blob/main/Diagramas/Diagramas%20de%20atividade%20v2.pdf)
